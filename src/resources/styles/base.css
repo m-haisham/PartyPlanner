@@ -44,7 +44,7 @@
   -fx-font-family: "Roboto Bold";
   -fx-font-size: 15;
 
-  -fx-background-color: #2c2c2c;
+  -fx-background-color: #ff4d00;
   -fx-background-insets: 5;
   -fx-background-radius: 5;
 }
@@ -64,6 +64,14 @@
 /* input fields */
 .jfx-text-field {
   -fx-prompt-text-fill: gray;
+}
+
+.jfx-text-area {
+  -fx-prompt-text-fill: gray;
+  -fx-font-family: "Roboto";
+  -fx-font-size: 14;
+  -jfx-focus-color: #ff4d00;
+  -fx-text-fill: #ffffff;
 }
 
 .input-field {
@@ -151,4 +159,44 @@
 
 .tab-header-background {
   -fx-background-color: ff4d00;
+}
+
+/* LIST */
+
+.jfx-list-view {
+  -fx-background-color: #272626;
+}
+
+.jfx-list-view .scroll-bar:horizontal .track,
+.jfx-list-view .scroll-bar:vertical .track {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-background-radius: 0em;
+  -fx-border-radius: 2em;
+}
+
+.jfx-list-view .scroll-bar:horizontal .increment-button,
+.jfx-list-view .scroll-bar:horizontal .decrement-button {
+  -fx-background-color: transparent;
+  -fx-background-radius: 0em;
+  -fx-padding: 0 0 10 0;
+}
+
+.jfx-list-view .scroll-bar:vertical .increment-button,
+.jfx-list-view .scroll-bar:vertical .decrement-button {
+  -fx-background-color: transparent;
+  -fx-background-radius: 0em;
+  -fx-padding: 0 10 0 0;
+}
+.jfx-list-view .scroll-bar .increment-arrow,
+.jfx-list-view .scroll-bar .decrement-arrow {
+  -fx-shape: " ";
+  -fx-padding: 0;
+}
+
+.jfx-list-view .scroll-bar:horizontal .thumb,
+.jfx-list-view .scroll-bar:vertical .thumb {
+  -fx-background-color: derive(black, 90%);
+  -fx-background-insets: 2, 0, 0;
+  -fx-background-radius: 2em;
 }

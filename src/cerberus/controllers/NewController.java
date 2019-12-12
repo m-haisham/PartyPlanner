@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -29,6 +30,9 @@ public class NewController implements Initializable {
     public Tab basicTab;
     public Tab organiserContactTab;
     public Tab birthdayTab;
+    public Tab weddingTab;
+    public Tab celebrationTab;
+    public Tab farewellTab;
     // BASIC
     @FXML JFXTextField labelField;
     @FXML JFXComboBox<String> partyTypeBox;
@@ -51,6 +55,25 @@ public class NewController implements Initializable {
     public JFXTextField birthdayCelebrantMobile;
     public JFXTextField birthdayCelebrantEmail;
     public JFXDatePicker birthdayCelebrantDate;
+
+    /* WEDDING */
+    public JFXTextField spouseName;
+    public JFXTextField spouseMobile;
+    public JFXTextField spouseEmail;
+    public JFXDatePicker spouseDate;
+    public JFXTextField groomName;
+    public JFXTextField groomMobile;
+    public JFXTextField groomEmail;
+    public JFXDatePicker groomDate;
+
+    /* CELEBRATION */
+    public JFXTextArea celebrationMessage;
+
+    /* FAREWELL */
+    public JFXTextField farewellName;
+    public JFXTextField farewellMobile;
+    public JFXTextField farewellEmail;
+    public JFXListView<VBox> farewellList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,6 +99,17 @@ public class NewController implements Initializable {
         /* BIRTHDAY */
         initBirthdayFields(requiredFieldValidator, numberValidator);
 
+        /* WEDDING */
+        initWeddingFields(requiredFieldValidator, numberValidator);
+
+        /* CELEBRATION */
+        celebrationMessage.getValidators().add(requiredFieldValidator);
+
+        /* FAREWELL */
+        farewellName.getValidators().add(requiredFieldValidator);
+        farewellMobile.getValidators().add(requiredFieldValidator);
+        farewellMobile.getValidators().add(numberValidator);
+        farewellEmail.getValidators().add(requiredFieldValidator);
     }
 
     private void initBirthdayFields(RequiredFieldValidator requiredFieldValidator, NumberValidator numberValidator) {
@@ -84,6 +118,22 @@ public class NewController implements Initializable {
         birthdayCelebrantMobile.getValidators().add(numberValidator);
         birthdayCelebrantEmail.getValidators().add(requiredFieldValidator);
         birthdayCelebrantDate.getValidators().add(requiredFieldValidator);
+    }
+
+    private void initWeddingFields(RequiredFieldValidator requiredFieldValidator, NumberValidator numberValidator) {
+        // spouse
+        spouseName.getValidators().add(requiredFieldValidator);
+        spouseMobile.getValidators().add(requiredFieldValidator);
+        spouseMobile.getValidators().add(numberValidator);
+        spouseEmail.getValidators().add(requiredFieldValidator);
+        spouseDate.getValidators().add(requiredFieldValidator);
+
+        // groom
+        groomName.getValidators().add(requiredFieldValidator);
+        groomMobile.getValidators().add(requiredFieldValidator);
+        groomMobile.getValidators().add(numberValidator);
+        groomEmail.getValidators().add(requiredFieldValidator);
+        groomDate.getValidators().add(requiredFieldValidator);
     }
 
     private void initBasicPickers() {
@@ -134,6 +184,7 @@ public class NewController implements Initializable {
         if (from.isEqual(to) || from.isAfter(to)) {
             updateTimeDifference(event);
             durationText.setText(durationText.getText() + ", must be greater than 0.");
+            proceed.add(false);
         }
 
         if (proceed.shouldProceed()) {
@@ -155,6 +206,9 @@ public class NewController implements Initializable {
                 case "Birthday":
                     stepTabs.getSelectionModel().select(birthdayTab);
                     break;
+                case "Wedding":
+                    stepTabs.getSelectionModel().select(weddingTab);
+                    break;
                 default:
                     break;
             }
@@ -174,6 +228,55 @@ public class NewController implements Initializable {
         if (proceed.shouldProceed()) {
             // contact adding stage
         }
+
+    }
+
+    public void weddingValidateAndProceed(ActionEvent event) {
+        Proceeder proceed = new Proceeder();
+
+        // spouse
+        proceed.add(spouseName.validate());
+        proceed.add(spouseMobile.validate());
+        proceed.add(spouseMobile.validate());
+        proceed.add(spouseEmail.validate());
+        proceed.add(spouseDate.validate());
+
+        // groom
+        proceed.add(groomName.validate());
+        proceed.add(groomMobile.validate());
+        proceed.add(groomMobile.validate());
+        proceed.add(groomEmail.validate());
+        proceed.add(groomDate.validate());
+
+        if (proceed.shouldProceed()) {
+            // contact adding stage
+        }
+    }
+
+    public void celebrationValidateAndProceed(ActionEvent event) {
+        Proceeder proceed = new Proceeder();
+
+        proceed.add(celebrationMessage.validate());
+
+        if (proceed.shouldProceed()) {
+            // contact adding stage
+        }
+    }
+
+    public void addToFarewellGroup(ActionEvent event) {
+        Proceeder proceed = new Proceeder();
+
+        proceed.add(farewellName.validate());
+        proceed.add(farewellMobile.validate());
+        proceed.add(farewellEmail.validate());
+
+        if (proceed.shouldProceed()) {
+            // add custom to list
+        }
+
+    }
+
+    public void farewellValidateAndProceed(ActionEvent event) {
 
     }
 }
