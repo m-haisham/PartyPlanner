@@ -1,4 +1,4 @@
-package cerberus.date;
+package cerberus.helper.date;
 
 public class LocalTimeDifference {
     private int hours;

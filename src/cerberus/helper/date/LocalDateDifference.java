@@ -1,4 +1,4 @@
-package cerberus.date;
+package cerberus.helper.date;
 
 public class LocalDateDifference {
     private final int years;

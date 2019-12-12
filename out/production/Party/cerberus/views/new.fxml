@@ -3,97 +3,235 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" styleClass="body" stylesheets="@../../resources/styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cerberus.controllers.NewController">
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1024.0" styleClass="body" stylesheets="@../../resources/styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cerberus.controllers.NewController">
    <center>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="345.0" styleClass="card">
-         <children>
-            <BorderPane prefHeight="200.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
-               <center>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </BorderPane.margin>
-                     <children>
-                        <BorderPane prefHeight="50.0" prefWidth="310.0">
-                           <bottom>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="BASIC" BorderPane.alignment="CENTER" />
-                           </bottom>
-                        </BorderPane>
-                        <JFXTextField fx:id="labelField" labelFloat="true" prefColumnCount="14" promptText="Label" styleClass="input-field">
-                           <VBox.margin>
-                              <Insets top="40.0" />
-                           </VBox.margin>
-                        </JFXTextField>
-                        <HBox>
+      <JFXTabPane fx:id="stepTabs" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab fx:id="basicTab" text="Basic">
+              <content>
+                  <BorderPane>
+                     <center>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="350.0" styleClass="card" BorderPane.alignment="CENTER">
                            <children>
-                              <JFXComboBox fx:id="partyTypeBox" labelFloat="true" prefHeight="23.0" prefWidth="417.0" promptText="Party Type" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                              <BorderPane prefHeight="200.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
+                                 <center>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </BorderPane.margin>
+                                       <children>
+                                          <BorderPane prefHeight="50.0" prefWidth="310.0">
+                                             <bottom>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="BASIC" BorderPane.alignment="CENTER" />
+                                             </bottom>
+                                          </BorderPane>
+                                          <JFXTextField fx:id="labelField" labelFloat="true" prefColumnCount="14" promptText="Label" styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="40.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <HBox>
+                                             <children>
+                                                <JFXComboBox fx:id="partyTypeBox" labelFloat="true" prefHeight="23.0" prefWidth="417.0" promptText="Party Type" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="29.0" prefWidth="285.0">
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="From">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="10.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <JFXDatePicker fx:id="partyFromDate" promptText="Date" HBox.hgrow="ALWAYS" />
+                                                <JFXTimePicker fx:id="partyFromTime" promptText="Time" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="29.0" prefWidth="285.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="To">
+                                                   <HBox.margin>
+                                                      <Insets bottom="2.0" left="2.0" right="24.0" top="2.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <JFXDatePicker fx:id="partyToDate" promptText="Date" HBox.hgrow="ALWAYS" />
+                                                <JFXTimePicker fx:id="partyToTime" promptText="Time" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="270.0" prefHeight="29.0" prefWidth="285.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Duration of">
+                                                   <HBox.margin>
+                                                      <Insets right="5.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Text fx:id="durationText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label" text="0" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <BorderPane>
+                                             <center>
+                                                <JFXButton onAction="#basicValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                             </center>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </BorderPane>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
                            </children>
-                           <VBox.margin>
-                              <Insets top="45.0" />
-                           </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="29.0" prefWidth="285.0">
-                           <VBox.margin>
-                              <Insets top="45.0" />
-                           </VBox.margin>
+                     </center>
+                  </BorderPane>
+              </content>
+            </Tab>
+            <Tab fx:id="organiserContactTab" text="Contact">
+              <content>
+                  <BorderPane>
+                     <center>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="350.0" styleClass="card" BorderPane.alignment="CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="From">
-                                 <HBox.margin>
-                                    <Insets bottom="2.0" left="2.0" right="10.0" top="2.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <JFXDatePicker fx:id="partyFromDate" promptText="Date" HBox.hgrow="ALWAYS" />
-                              <JFXTimePicker fx:id="partyFromTime" promptText="Time" />
+                              <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                                 <center>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </BorderPane.margin>
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CONTACT INFO" />
+                                             </children>
+                                          </HBox>
+                                          <JFXTextField fx:id="organizerNameField" labelFloat="true" promptText="Full name" styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="25.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="organiserMobileField" labelFloat="true" layoutX="10.0" layoutY="50.0" promptText="Mobile no." styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="organiserEmailField" labelFloat="true" layoutX="10.0" layoutY="78.0" promptText="Email" styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <BorderPane>
+                                             <center>
+                                                <JFXButton onAction="#organiserValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                   <BorderPane.margin>
+                                                      <Insets />
+                                                   </BorderPane.margin>
+                                                </JFXButton>
+                                             </center>
+                                             <VBox.margin>
+                                                <Insets top="35.0" />
+                                             </VBox.margin>
+                                          </BorderPane>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
                            </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="29.0" prefWidth="285.0">
+                        </VBox>
+                     </center>
+                  </BorderPane>
+              </content>
+            </Tab>
+            <Tab fx:id="birthdayTab" text="BirthdayInfo">
+              <content>
+                  <BorderPane>
+                     <center>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="350.0" styleClass="card" BorderPane.alignment="CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="To">
-                                 <HBox.margin>
-                                    <Insets bottom="2.0" left="2.0" right="24.0" top="2.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <JFXDatePicker fx:id="partyToDate" promptText="Date" HBox.hgrow="ALWAYS" />
-                              <JFXTimePicker fx:id="partyToTime" promptText="Time" />
+                              <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                                 <center>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <BorderPane.margin>
+                                          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                       </BorderPane.margin>
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="290.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="CELEBRANT INFO" />
+                                             </children>
+                                          </HBox>
+                                          <JFXTextField fx:id="birthdayCelebrantName" labelFloat="true" promptText="Full name" styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="25.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="birthdayCelebrantMobile" labelFloat="true" layoutX="10.0" layoutY="50.0" promptText="Mobile no." styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="birthdayCelebrantEmail" labelFloat="true" layoutX="10.0" layoutY="78.0" promptText="Email" styleClass="input-field">
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </JFXTextField>
+                                          <HBox alignment="CENTER" prefHeight="29.0" prefWidth="285.0">
+                                             <children>
+                                                <AnchorPane HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXDatePicker fx:id="birthdayCelebrantDate" promptText="Date" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="45.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <BorderPane>
+                                             <center>
+                                                <JFXButton onAction="#birthdayValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                   <BorderPane.margin>
+                                                      <Insets />
+                                                   </BorderPane.margin>
+                                                </JFXButton>
+                                             </center>
+                                             <VBox.margin>
+                                                <Insets top="35.0" />
+                                             </VBox.margin>
+                                          </BorderPane>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
                            </children>
-                           <VBox.margin>
-                              <Insets top="45.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="270.0" prefHeight="29.0" prefWidth="285.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Duration of">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Text fx:id="durationText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label" text="0" />
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <BorderPane>
-                           <center>
-                              <JFXButton onAction="#basicValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
-                           </center>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </BorderPane>
-                     </children>
-                  </VBox>
-               </center>
-            </BorderPane>
-         </children>
-      </HBox>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
    </center>
 </BorderPane>
