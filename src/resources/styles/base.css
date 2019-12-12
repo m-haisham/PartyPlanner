@@ -50,9 +50,20 @@
 }
 
 .label {
-  -fx-font-family: "Roboto Light";
-  -fx-font-size: 16;
-  -fx-fill: #ffffff;
+  -fx-font-family: "Roboto";
+  -fx-font-size: 12;
+  -fx-fill: grey;
+}
+
+.primary-label {
+  -fx-font-family: "Roboto";
+  -fx-font-size: 12;
+  -fx-fill: #ff4d00;
+}
+
+/* input fields */
+.jfx-text-field {
+  -fx-prompt-text-fill: gray;
 }
 
 .input-field {
@@ -60,7 +71,60 @@
   -fx-font-size: 14;
   -jfx-focus-color: #ff4d00;
   -fx-text-fill: #ffffff;
-  -fx-focus-fill: #ff4d00;
+}
+
+.jfx-combo-box {
+  -jfx-focus-color: #ff4d00;
+  -fx-font-family: "Roboto";
+  -fx-font-size: 14;
+  -fx-prompt-text-fill: gray;
+}
+
+.jfx-combo-box .list-cell {
+  -fx-text-fill: white;
+}
+
+.jfx-combo-box .list-view .list-cell {
+  -fx-background-color: #2c2c2c;
+  -fx-text-fill: white;
+}
+
+/* Rippler */
+.jfx-rippler {
+  -jfx-rippler-fill: #ff4d00;
+}
+
+/* Pickers */
+.jfx-date-picker,
+.jfx-time-picker {
+  -jfx-default-color: #ff4d00;
+}
+
+.jfx-time-picker .text-field,
+.jfx-date-picker .text-field {
+  -fx-text-fill: white;
+  -fx-font-family: "Roboto";
+}
+
+/* Buttons */
+
+.jfx-button {
+  -fx-text-fill: #fff;
+}
+
+.proceed-button {
+  -fx-font-family: "Roboto Black";
+  -fx-font-size: 15;
+  -fx-pref-height: 30;
+
+  -fx-background-color: #ff4d00;
+  -fx-background-radius: 5;
+
+  -fx-padding: 10 15 10 15;
+}
+
+.proceed-button .jfx-rippler {
+  -jfx-rippler-fill: #ffceb9;
 }
 
 .card {
@@ -69,6 +133,10 @@
 }
 
 .jfx-button {
+  -fx-cursor: hand;
+}
+
+.jfx-hamburger {
   -fx-cursor: hand;
 }
 

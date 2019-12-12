@@ -49,7 +49,6 @@ public class BaseController implements Initializable {
                 Node button = ((AnchorPane) node).getChildren().get(0);
                 if (button.getAccessibleText() != null) {
                     button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                        System.out.println(event);
                         switch (button.getAccessibleText()) {
                             case "book": {
                                 menuTab.getSelectionModel().select(newTab);
@@ -58,21 +57,21 @@ public class BaseController implements Initializable {
                             case "calender": {
                                 menuTab.getSelectionModel().select(calenderTab);
                                 break;
-
                             }
                             case "chart": {
                                 menuTab.getSelectionModel().select(chartTab);
                                 break;
-
                             }
                             case "settings": {
                                 menuTab.getSelectionModel().select(settingsTab);
                                 break;
-
                             }
                             default:
                                 break;
                         }
+
+                        drawerStack.toggle(drawer, false);
+
                     });
                 }
             }
