@@ -200,3 +200,20 @@
   -fx-background-insets: 2, 0, 0;
   -fx-background-radius: 2em;
 }
+
+.list-cell {
+  -fx-padding: 0px;
+}
+
+/* List Items */
+.list-item-title {
+  -fx-font-family: "Roboto";
+  -fx-font-size: 15;
+  -fx-fill: white;
+}
+
+.list-item-subtitle {
+  -fx-font-family: "Roboto";
+  -fx-font-size: 13;
+  -fx-fill: gray;
+}

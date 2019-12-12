@@ -471,7 +471,7 @@
                                                             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="GROUP" />
                                                          </children>
                                                       </HBox>
-                                                      <JFXListView fx:id="farewellList">
+                                                      <JFXListView fx:id="farewellList" verticalGap="1.0">
                                                          <VBox.margin>
                                                             <Insets bottom="30.0" top="20.0" />
                                                          </VBox.margin>

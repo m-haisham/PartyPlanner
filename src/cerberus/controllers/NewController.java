@@ -4,6 +4,7 @@ import cerberus.helper.date.DateTimeHelper;
 import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
 import cerberus.helper.proceed.Proceeder;
+import cerberus.models.list.SimpleListItem;
 import cerberus.party.types.Birthday;
 import cerberus.party.types.Celebration;
 import cerberus.party.types.Farewell;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -271,7 +273,10 @@ public class NewController implements Initializable {
         proceed.add(farewellEmail.validate());
 
         if (proceed.shouldProceed()) {
-            // add custom to list
+
+            SimpleListItem listItem = new SimpleListItem(farewellName.getText(), farewellEmail.getText());
+            farewellList.getItems().add(listItem.asNode());
+
         }
 
     }
