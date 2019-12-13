@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefWidth="220.0" styleClass="body" stylesheets="/styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="220.0">
+               <children>
+                  <JFXButton fx:id="bookButton" accessibleText="book" layoutX="84.0" layoutY="8.0" styleClass="navigation-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <BorderPane prefHeight="26.0" prefWidth="151.0">
+                           <center>
+                              <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="BOOK">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="90.0" />
+               </VBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="220.0">
+               <children>
+                  <JFXButton fx:id="calenderButton" accessibleText="calender" layoutX="84.0" layoutY="8.0" styleClass="navigation-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <BorderPane prefHeight="26.0" prefWidth="151.0">
+                           <center>
+                              <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="CALENDER">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="220.0">
+               <children>
+                  <JFXButton fx:id="chartButton" accessibleText="chart" layoutX="84.0" layoutY="8.0" styleClass="navigation-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <BorderPane prefHeight="26.0" prefWidth="149.0">
+                           <center>
+                              <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="CHART">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="220.0">
+               <children>
+                  <JFXButton fx:id="settingsButton" accessibleText="settings" layoutX="84.0" layoutY="8.0" styleClass="navigation-button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+                     <graphic>
+                        <BorderPane prefHeight="26.0" prefWidth="151.0">
+                           <center>
+                              <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="SETTINGS">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

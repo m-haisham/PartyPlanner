@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="box" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" styleClass="body" stylesheets="/styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-item-title" text="Title">
+         <VBox.margin>
+            <Insets left="20.0" top="12.0" />
+         </VBox.margin>
+      </Text>
+      <Text fx:id="subtitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-item-subtitle" text="subtitle">
+         <VBox.margin>
+            <Insets left="20.0" top="3.0" />
+         </VBox.margin>
+      </Text>
+   </children>
+</VBox>

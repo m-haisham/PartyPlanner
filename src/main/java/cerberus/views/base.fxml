@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawersStack?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cerberus.controllers.BaseController">
+   <children>
+      <AnchorPane>
+         <children>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #272121;" stylesheets="../resources/styles/base.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="50.0" prefWidth="1024.0" style="-fx-background-color: #ff4d00;" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXHamburger fx:id="menuBurger" style="-fx-color: #fff;">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </JFXHamburger>
+                        <AnchorPane prefHeight="50.0" prefWidth="220.0">
+                           <children>
+                              <Text fill="WHITE" layoutX="14.0" layoutY="32.0" styleClass="heading" text="Spirit Gathering" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <JFXTabPane fx:id="menuTab" nodeOrientation="LEFT_TO_RIGHT" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                     <Tab id="settings" fx:id="newTab" text="New">
+                        <fx:include source="new.fxml" />
+                     </Tab>
+                     <Tab id="settings" fx:id="calenderTab" text="Calender">
+                        <fx:include source="calender.fxml" />
+                     </Tab>
+                     <Tab id="settings" fx:id="chartTab" text="Ledger">
+                        <fx:include source="ledger.fxml" />
+                     </Tab>
+                     <Tab id="settings" fx:id="settingsTab" text="Settings">
+                        <fx:include source="settings.fxml" />
+                     </Tab>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </JFXTabPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="drawerAnchor" mouseTransparent="true" StackPane.alignment="BOTTOM_LEFT">
+         <children>
+            <JFXDrawersStack fx:id="drawerStack" mouseTransparent="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
