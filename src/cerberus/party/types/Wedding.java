@@ -7,11 +7,11 @@ public class Wedding extends Party {
     private Person wife;
     private Person husband;
 
-    public Wedding(String label, Address venue, Duration on) {
+    public Wedding(String label, Venue venue, Duration on) {
         this(label, venue, on, Person.empty(), Person.empty());
     }
 
-    public Wedding(String label, Address venue, Duration on, Person wife, Person husband) {
+    public Wedding(String label, Venue venue, Duration on, Person wife, Person husband) {
         super(label, venue, on);
         this.wife = wife;
         this.husband = husband;

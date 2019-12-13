@@ -1,6 +1,6 @@
 package cerberus.party.types;
 
-import cerberus.party.Address;
+import cerberus.party.Venue;
 import cerberus.party.Duration;
 import cerberus.party.Party;
 import cerberus.party.Person;
@@ -10,16 +10,16 @@ public class Birthday extends Party {
     private Person person;
     private int age;
 
-    public Birthday(String label, Address venue, Duration on) {
+    public Birthday(String label, Venue venue, Duration on) {
         this(label, Person.empty(), venue, on);
     }
 
-    public Birthday(String label, Person person, Address venue, Duration on) {
+    public Birthday(String label, Person person, Venue venue, Duration on) {
         this(label, person, 0, venue, on);
         this.setAge(this.getAgeOnPartyDate(person));
     }
 
-    public Birthday(String label, Person person, int age, Address venue, Duration on) {
+    public Birthday(String label, Person person, int age, Venue venue, Duration on) {
         super(label, venue, on);
         this.person = person;
         this.age = age;

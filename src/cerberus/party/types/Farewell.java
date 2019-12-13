@@ -1,6 +1,6 @@
 package cerberus.party.types;
 
-import cerberus.party.Address;
+import cerberus.party.Venue;
 import cerberus.party.Contact;
 import cerberus.party.Duration;
 import cerberus.party.Party;
@@ -11,7 +11,7 @@ public class Farewell extends Party {
     private ArrayList<Contact> group;
 
 
-    public Farewell(String label, Address venue, Duration on) {
+    public Farewell(String label, Venue venue, Duration on) {
         super(label, venue, on);
         this.group = new ArrayList<>();
     }

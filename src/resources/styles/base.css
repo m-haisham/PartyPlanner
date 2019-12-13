@@ -23,6 +23,10 @@
   src: url(../fonts/roboto/Roboto-Thin.ttf);
 }
 
+.root {
+  -fx-font-family: "Roboto";
+}
+
 .body {
   -fx-background-color: #272121;
   -fx-font-family: "Roboto";
@@ -32,6 +36,12 @@
 .heading {
   -fx-font-family: "Roboto Bold";
   -fx-font-size: 20;
+}
+
+.heading-primary {
+  -fx-font-family: "Roboto Black";
+  -fx-fill: #ff4d00;
+  -fx-font-size: 22;
 }
 
 .subheading {
@@ -55,10 +65,27 @@
   -fx-fill: grey;
 }
 
+.label-14 {
+  -fx-font-family: "Roboto";
+  -fx-font-size: 14;
+  -fx-fill: grey;
+}
+
 .primary-label {
   -fx-font-family: "Roboto";
   -fx-font-size: 12;
   -fx-fill: #ff4d00;
+}
+
+.primary-label-14 {
+  -fx-font-family: "Roboto";
+  -fx-font-size: 14;
+  -fx-fill: #ff4d00;
+}
+
+/* BACKGROUND */
+.primary-background {
+  -fx-background-color: #ff7439;
 }
 
 /* input fields */
@@ -164,7 +191,7 @@
 /* LIST */
 
 .jfx-list-view {
-  -fx-background-color: #272626;
+  -fx-background-color: transparent;
 }
 
 .jfx-list-view .scroll-bar:horizontal .track,
@@ -216,4 +243,59 @@
   -fx-font-family: "Roboto";
   -fx-font-size: 13;
   -fx-fill: gray;
+}
+
+/* Tree */
+
+.tree-table-view,
+.table-view {
+  -fx-font-family: "Roboto";
+  -fx-text-fill: #fff;
+  -fx-background-color: transparent;
+}
+
+.table-cell {
+  -fx-text-fill: #fff;
+  -fx-font-family: "Roboto";
+  -fx-font-size: 15px;
+}
+
+.tree-table-row-cell {
+  -fx-background-color: transparent;
+}
+
+.tree-table-row-cell .tree-table-cell {
+  -fx-text-fill: gray;
+  -fx-font-family: "Roboto Dark";
+  -fx-font-size: 15px;
+}
+
+.tree-table-row-cell:selected .tree-table-cell {
+  -fx-text-fill: #ff4d00;
+  -fx-font-family: "Roboto Dark";
+  -fx-font-size: 15px;
+}
+
+.table-view .column-header,
+.table-view .filler {
+  -fx-background-color: rgb(0, 0, 0);
+  -fx-size: 35px;
+  -fx-border-color: -fx-box-border;
+  -fx-border-insets: -1 0 0 -1;
+  -fx-padding: 0 5 0 0;
+}
+
+.tree-table-view .column-header,
+.tree-table-view .filler {
+  -fx-background-color: transparent;
+  -fx-size: 35px;
+  -fx-border-color: gray;
+  -fx-border-insets: -1 0 0 -1;
+  -fx-padding: 0 5 0 0;
+}
+
+/* CHECKBOX */
+.jfx-check-box {
+  -jfx-checked-color: #ff4d00;
+  -jfx-unchecked-color: white;
 }

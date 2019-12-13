@@ -1,6 +1,5 @@
 package cerberus.party;
 
-import cerberus.party.decorations.Decoration;
 import cerberus.party.decorations.QuantifiedDecoration;
 
 import java.time.LocalDateTime;
@@ -9,14 +8,14 @@ import java.util.ArrayList;
 public class Party {
 
     private String label;
-    private Address venue;
+    private Venue venue;
     private Duration on;
     private LocalDateTime created;
     private ArrayList<Contact> contacts;
     private Contact contact;
     private ArrayList<QuantifiedDecoration> decorations;
 
-    public Party(String label, Address venue, Duration on) {
+    public Party(String label, Venue venue, Duration on) {
         this.label = label;
         this.venue = venue;
         this.on = on;
@@ -34,11 +33,11 @@ public class Party {
         this.label = label;
     }
 
-    public Address getVenue() {
+    public Venue getVenue() {
         return venue;
     }
 
-    public void setVenue(Address venue) {
+    public void setVenue(Venue venue) {
         this.venue = venue;
     }
 
