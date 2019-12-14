@@ -228,8 +228,8 @@
   -fx-background-radius: 2em;
 }
 
-.list-cell {
-  -fx-padding: 0px;
+.scroll-bar {
+  -fx-background-color: transparent;
 }
 
 /* List Items */
@@ -243,6 +243,18 @@
   -fx-font-family: "Roboto";
   -fx-font-size: 13;
   -fx-fill: gray;
+}
+
+.jfx-list-view .list-cell:even {
+  -fx-background-color: #2c2c2c;
+  -fx-background-radius: 5;
+  -fx-padding: 0px;
+}
+
+.jfx-list-view .list-cell:odd {
+  -fx-background-color: #303030;
+  -fx-background-radius: 5;
+  -fx-padding: 0px;
 }
 
 /* Tree */
@@ -298,4 +310,12 @@
 .jfx-check-box {
   -jfx-checked-color: #ff4d00;
   -jfx-unchecked-color: white;
+}
+
+/* TOGGLE BUTTON */
+.jfx-toggle-button {
+  -jfx-toggle-color: #ff4d00;
+  -jfx-untoggle-color: #181818;
+  -jfx-toggle-line-color: #fd8b5a;
+  -jfx-untoggle-line-color: #4e4e4e;
 }

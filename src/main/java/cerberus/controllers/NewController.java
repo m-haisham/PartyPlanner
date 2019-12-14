@@ -45,6 +45,8 @@ import java.util.stream.Collectors;
 
 public class NewController implements Initializable {
 
+    public static NewController instance;
+
     public JFXTabPane stepTabs;
     public Tab basicTab;
     public Tab organiserContactTab;
@@ -56,6 +58,7 @@ public class NewController implements Initializable {
     public Tab contactsTab;
     public Tab decorationTab;
     public Tab completeTab;
+    public Tab prepaymentTab;
 
     // BASIC
     @FXML JFXTextField labelField;
@@ -119,6 +122,11 @@ public class NewController implements Initializable {
     public List<QuantifiedListItem> decorations;
     public Text decorationTotal;
 
+    /* PREPAYMENT */
+    public Text prepaymentTotal;
+    public Text prepaymentPercent;
+    public JFXToggleButton prepaymentToggle;
+
     /* COMPLETE */
     public Text completeLabel;
     public Text completeType;
@@ -135,6 +143,8 @@ public class NewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
+
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         requiredFieldValidator.setMessage("This field is required!");
 
@@ -259,7 +269,7 @@ public class NewController implements Initializable {
 
         // Table
         JFXTreeTableColumn<VenueItem, String> address = new JFXTreeTableColumn<>("Address");
-        address.setPrefWidth(300);
+        address.setPrefWidth(220);
         address.setCellValueFactory(param -> param.getValue().getValue().getAddress());
 
         JFXTreeTableColumn<VenueItem, Double> cost = new JFXTreeTableColumn<>("Cost");
@@ -447,6 +457,10 @@ public class NewController implements Initializable {
     public void addToContactsGroup(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
+        proceed.add(newContactName.validate());
+        proceed.add(newContactMobile.validate());
+        proceed.add(newContactEmail.validate());
+
         if (proceed.shouldProceed()) {
 
             contactsGroup.add(new Contact(newContactName.getText(), Integer.parseInt(newContactMobile.getText()), newContactEmail.getText()));
@@ -492,8 +506,20 @@ public class NewController implements Initializable {
         }
 
         if (proceed.shouldProceed()) {
-            completeAndDisplay();
+
+            // setup prepayment
+            double totalCost = venueTable.getSelectionModel().getSelectedItem().getValue().getVenue().getCost()
+                            + Double.parseDouble(decorationTotal.getText());
+
+            prepaymentTotal.setText(String.valueOf(totalCost));
+            prepaymentPercent.setText(String.valueOf(totalCost * Party.prepaymentPercent));
+
+            stepTabs.getSelectionModel().select(prepaymentTab);
         }
+    }
+
+    public void prepaymentValidateAndProceed(ActionEvent event) {
+        completeAndDisplay();
     }
 
     public void completeAndDisplay() {
@@ -587,6 +613,7 @@ public class NewController implements Initializable {
                 LocalDateTime.of(partyFromDate.getValue(), partyFromTime.getValue()),
                 LocalDateTime.of(partyToDate.getValue(), partyToTime.getValue())
         ));
+        party.setPaidPercentile(prepaymentToggle.isSelected() ? Party.prepaymentPercent : 0);
 
         party.setContacts(contactsGroup);
         party.setContact(new Contact(
@@ -608,8 +635,10 @@ public class NewController implements Initializable {
                     Integer.parseInt(listItem.getTextField().getText())
             ));
         });
+
         party.setDecorations(decos);
 
         Main.database.insertParty(party);
+        PartyListController.instance.update();
     }
 }

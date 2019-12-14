@@ -55,6 +55,7 @@ public class Celebration extends Party implements Mappable {
             this.setLabel(b.getLabel());
             this.setVenue(b.getVenue());
             this.setOn(b.getOn());
+            this.setPaidPercentile(b.getPaidPercentile());
             this.created = b.getCreated();
             this.setContacts(b.getContacts());
             this.setContact(b.getContact());

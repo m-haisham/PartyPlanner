@@ -9,10 +9,13 @@ import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Database {
 
     private Nitrite db;
+
+    private ObjectRepository<Party> somePaid;
 
     private ObjectRepository<Birthday> birthdays;
     private ObjectRepository<Wedding> weddings;
@@ -25,6 +28,8 @@ public class Database {
                 .filePath(file)
                 .openOrCreate();
 
+
+        somePaid = db.getRepository(Party.class);
 
         birthdays = db.getRepository(Birthday.class);
         weddings = db.getRepository(Wedding.class);
@@ -49,8 +54,56 @@ public class Database {
             assert party instanceof Celebration;
             celebrations.insert((Celebration) party);
         }
+    }
 
-        System.out.println(party);
+    public ArrayList<Party> getAll() {
+        ArrayList<Party> all = new ArrayList<>();
+
+        birthdays.find().forEach(all::add);
+        weddings.find().forEach(all::add);
+        farewells.find().forEach(all::add);
+        celebrations.find().forEach(all::add);
+
+        return all;
+    }
+
+    public ArrayList<Party> getAll(boolean prepaid) {
+        ArrayList<Party> paid = new ArrayList<>();
+        ArrayList<Party> unpaid = new ArrayList<>();
+
+        for (Birthday birthday : birthdays.find()) {
+            if (birthday.getPaidPercentile() != 0)
+                paid.add(birthday);
+            else
+                unpaid.add(birthday);
+
+        }
+        for (Wedding wedding : weddings.find()) {
+            if (wedding.getPaidPercentile() != 0)
+                paid.add(wedding);
+            else
+                unpaid.add(wedding);
+
+        }
+        for (Farewell farewell : farewells.find()) {
+            if (farewell.getPaidPercentile() != 0)
+                paid.add(farewell);
+            else
+                unpaid.add(farewell);
+
+        }
+        for (Celebration celebration : celebrations.find()) {
+            if (celebration.getPaidPercentile() != 0)
+                paid.add(celebration);
+            else
+                unpaid.add(celebration);
+
+        }
+
+        if (prepaid)
+            return paid;
+        else
+            return unpaid;
     }
 
     public Nitrite getDb() {

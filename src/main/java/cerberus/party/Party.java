@@ -3,13 +3,18 @@ package cerberus.party;
 import cerberus.party.decorations.QuantifiedDecoration;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Party{
+public class Party {
+
+    public static double prepaymentPercent = 0.15;
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd MMM yyyy");
 
     private String label;
     private Venue venue;
     private Duration on;
+    private double paidPercentile;
     protected LocalDateTime created;
     private ArrayList<Contact> contacts;
     private Contact contact;
@@ -20,6 +25,7 @@ public class Party{
         this.venue = venue;
         this.on = on;
 
+        paidPercentile = 0;
         created = LocalDateTime.now();
         contacts = new ArrayList<>();
         decorations = new ArrayList<>();
@@ -79,5 +85,13 @@ public class Party{
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public double getPaidPercentile() {
+        return paidPercentile;
+    }
+
+    public void setPaidPercentile(double paidPercentile) {
+        this.paidPercentile = paidPercentile;
     }
 }

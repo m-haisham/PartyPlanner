@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -17,6 +18,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BaseController implements Initializable {
+
+    public static BaseController instance;
+
+    @FXML public StackPane root;
+
     // drawer
     @FXML JFXHamburger menuBurger;
     @FXML AnchorPane drawerAnchor;
@@ -32,12 +38,13 @@ public class BaseController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        instance = this;
         initDrawer();
     }
 
     private void initDrawer() {
         drawer = new JFXDrawer();
-        drawer.setDefaultDrawerSize(220);
+        drawer.setDefaultDrawerSize(300);
         drawerStack.toggle(drawer, false);
 
         // Load and set the side bar content
@@ -71,7 +78,6 @@ public class BaseController implements Initializable {
                         }
 
                         drawerStack.toggle(drawer, false);
-
                     });
                 }
             }
