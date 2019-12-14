@@ -7,9 +7,17 @@ public class Venue {
     private String path;
     private double cost;
 
+    public Venue() {
+        this("", 0);
+    }
+
     public Venue(String path, double cost) {
         this.path = path;
         this.cost = cost;
+    }
+
+    public static Venue empty() {
+        return new Venue("", 0);
     }
 
     public String getPath() {

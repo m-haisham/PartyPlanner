@@ -1,5 +1,6 @@
 package cerberus.controllers;
 
+import cerberus.Main;
 import cerberus.helper.date.DateTimeHelper;
 import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
@@ -8,11 +9,10 @@ import cerberus.models.list.QuantifiedListItem;
 import cerberus.models.list.SelectableListItem;
 import cerberus.models.list.SimpleListItem;
 import cerberus.models.table.VenueItem;
-import cerberus.party.Contact;
-import cerberus.party.Duration;
-import cerberus.party.Venue;
+import cerberus.party.*;
 import cerberus.party.decorations.Decoration;
 import cerberus.party.decorations.DecorationFactory;
+import cerberus.party.decorations.QuantifiedDecoration;
 import cerberus.party.types.Birthday;
 import cerberus.party.types.Celebration;
 import cerberus.party.types.Farewell;
@@ -32,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -520,11 +521,95 @@ public class NewController implements Initializable {
         );
         completeDecorationsCost.setText(decorationTotal.getText());
         completeTotalCost.setText(
-                String.valueOf(venueTable.getSelectionModel().getSelectedItem().getValue().getVenue().getCost())
-                + Double.parseDouble(decorationTotal.getText())
+                String.valueOf(venueTable.getSelectionModel().getSelectedItem().getValue().getVenue().getCost()
+                + Double.parseDouble(decorationTotal.getText()))
         );
 
         stepTabs.getSelectionModel().select(completeTab);
+        createAndAdd();
+    }
 
+    public void createAndAdd() {
+
+        Party party = null;
+
+        if (partyTypeBox.getValue().equals(Birthday.class.getSimpleName())) {
+            party = new Birthday();
+            party = (Birthday) party;
+
+            ((Birthday) party).setPerson(new Person(
+                    birthdayCelebrantName.getText(),
+                    birthdayCelebrantDate.getValue(),
+                    Integer.parseInt(birthdayCelebrantMobile.getText()),
+                    birthdayCelebrantEmail.getText()
+            ));
+
+            ((Birthday) party).setAge(((Birthday) party).getAgeOnPartyDate());
+
+        } else if (partyTypeBox.getValue().equals(Celebration.class.getSimpleName())) {
+            party = new Celebration();
+            party = (Celebration) party;
+
+            ((Celebration) party).setMessage(celebrationMessage.getText());
+
+        } else if (partyTypeBox.getValue().equals(Farewell.class.getSimpleName())) {
+            party = new Farewell();
+            party = (Farewell) party;
+
+            ((Farewell) party).setGroup(farewellGroup);
+
+        } else if (partyTypeBox.getValue().equals(Wedding.class.getSimpleName())) {
+            party = new Wedding();
+            party = (Wedding) party;
+
+            ((Wedding) party).setHusband(new Person(
+                    groomName.getText(),
+                    groomDate.getValue(),
+                    Integer.parseInt(groomMobile.getText()),
+                    groomEmail.getText()
+            ));
+
+            ((Wedding) party).setWife(new Person(
+                    spouseName.getText(),
+                    spouseDate.getValue(),
+                    Integer.parseInt(spouseMobile.getText()),
+                    spouseEmail.getText()
+            ));
+        }
+
+        if (party == null)
+            return;
+
+        // generics
+        party.setLabel(labelField.getText());
+        party.setVenue(venueTable.getSelectionModel().getSelectedItem().getValue().getVenue());
+        party.setOn(new Duration(
+                LocalDateTime.of(partyFromDate.getValue(), partyFromTime.getValue()),
+                LocalDateTime.of(partyToDate.getValue(), partyToTime.getValue())
+        ));
+
+        party.setContacts(contactsGroup);
+        party.setContact(new Contact(
+                organizerNameField.getText(),
+                Integer.parseInt(organiserMobileField.getText()),
+                organiserEmailField.getText()
+        ));
+
+        // decorations
+        ArrayList<QuantifiedDecoration> decos = new ArrayList<>();
+        decorations.forEach(listItem -> {
+
+            if (listItem.getTextField().getText().equals(""))
+                return;
+
+            decos.add(new QuantifiedDecoration(
+                    listItem.getTitle(),
+                    Double.parseDouble(listItem.getLeading()),
+                    Integer.parseInt(listItem.getTextField().getText())
+            ));
+        });
+        party.setDecorations(decos);
+
+        Main.database.insertParty(party);
     }
 }

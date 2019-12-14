@@ -5,6 +5,10 @@ import java.time.LocalDate;
 public class Person extends Contact {
     private LocalDate birthDate;
 
+    public Person() {
+        this("", LocalDate.now(), -1, "");
+    }
+
     public Person(String name, LocalDate birthDate, int mobile, String email) {
         super(name, mobile, email);
         this.birthDate = birthDate;

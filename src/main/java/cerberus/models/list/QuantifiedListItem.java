@@ -50,6 +50,10 @@ public class QuantifiedListItem {
         this.textField.setValidators(new IntegerValidator() {{ setMessage("Int!"); }});
     }
 
+    public String getTitle() {
+        return title.getText();
+    }
+
     public void setTitle(String title) {
         this.title.setText(title);
     }

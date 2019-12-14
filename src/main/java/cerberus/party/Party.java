@@ -5,12 +5,12 @@ import cerberus.party.decorations.QuantifiedDecoration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Party {
+public class Party{
 
     private String label;
     private Venue venue;
     private Duration on;
-    private LocalDateTime created;
+    protected LocalDateTime created;
     private ArrayList<Contact> contacts;
     private Contact contact;
     private ArrayList<QuantifiedDecoration> decorations;
