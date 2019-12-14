@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="box" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="72.0" prefWidth="130.0" stylesheets="@../../styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <Text fx:id="label" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-item-title" text="Text" />
+            <Text fx:id="organizer" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-item-subtitle" text="Text">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Text fx:id="type" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="list-item-subtitle" text="Text" />
+                  <Region prefHeight="0.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label" text="Text" />
+               </children>
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </VBox>
+   </children>
+</VBox>

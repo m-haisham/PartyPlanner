@@ -3,6 +3,7 @@ package cerberus.controllers;
 import cerberus.Main;
 import cerberus.models.list.PartyItem;
 import cerberus.party.Party;
+import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
@@ -40,7 +41,7 @@ public class PartyListController implements Initializable {
 
             @Override
             public ListCell<PartyItem> call(ListView<PartyItem> param) {
-                return new ListCell<PartyItem>() {
+                return new JFXListCell<PartyItem>() {
 
                     @Override
                     protected void updateItem(PartyItem item, boolean empty) {
