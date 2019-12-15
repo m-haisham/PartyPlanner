@@ -8,6 +8,11 @@ public class Proceeder {
             this.value = value;
     }
 
+    public void addAll(boolean[] values) {
+        for (boolean value : values)
+            add(value);
+    }
+
     public boolean shouldProceed() {
         return value;
     }

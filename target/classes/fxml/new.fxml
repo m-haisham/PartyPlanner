@@ -684,7 +684,7 @@
                <content>
                   <BorderPane>
                      <center>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="380.0" styleClass="card" BorderPane.alignment="CENTER">
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="650.0" styleClass="card" BorderPane.alignment="CENTER">
                            <children>
                               <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                                  <center>

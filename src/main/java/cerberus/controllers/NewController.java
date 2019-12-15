@@ -5,6 +5,7 @@ import cerberus.helper.date.DateTimeHelper;
 import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
 import cerberus.helper.proceed.Proceeder;
+import cerberus.models.dialog.AlertDialog;
 import cerberus.models.list.QuantifiedListItem;
 import cerberus.models.list.SimpleListItem;
 import cerberus.models.table.VenueItem;
@@ -317,8 +318,10 @@ public class NewController implements Initializable {
         Proceeder proceed = new Proceeder();
 
         // input validation
-        proceed.add(labelField.validate());
-        proceed.add(partyTypeBox.validate());
+        proceed.addAll(new boolean[] {
+                labelField.validate(),
+                partyTypeBox.validate()
+        });
 
         // time validation
         LocalDateTime from = LocalDateTime.of(partyFromDate.getValue(), partyFromTime.getValue());
@@ -339,9 +342,11 @@ public class NewController implements Initializable {
     public void organiserValidateAndProceed(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
-        proceed.add(organizerNameField.validate());
-        proceed.add(organiserMobileField.validate());
-        proceed.add(organiserEmailField.validate());
+        proceed.addAll(new boolean[] {
+                organizerNameField.validate(),
+                organiserMobileField.validate(),
+                organiserEmailField.validate()
+        });
 
         if (proceed.shouldProceed()) {
 
@@ -367,10 +372,12 @@ public class NewController implements Initializable {
     public void birthdayValidateAndProceed(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
-        proceed.add(birthdayCelebrantName.validate());
-        proceed.add(birthdayCelebrantMobile.validate());
-        proceed.add(birthdayCelebrantEmail.validate());
-        proceed.add(birthdayCelebrantDate.validate());
+        proceed.addAll(new boolean[] {
+                birthdayCelebrantName.validate(),
+                birthdayCelebrantMobile.validate(),
+                birthdayCelebrantEmail.validate(),
+                birthdayCelebrantDate.validate()
+        });
 
         if (proceed.shouldProceed()) {
             stepTabs.getSelectionModel().select(venueTab);
@@ -381,19 +388,21 @@ public class NewController implements Initializable {
     public void weddingValidateAndProceed(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
-        // spouse
-        proceed.add(spouseName.validate());
-        proceed.add(spouseMobile.validate());
-        proceed.add(spouseMobile.validate());
-        proceed.add(spouseEmail.validate());
-        proceed.add(spouseDate.validate());
+        proceed.addAll(new boolean[] {
+                // bride
+                spouseName.validate(),
+                spouseMobile.validate(),
+                spouseMobile.validate(),
+                spouseEmail.validate(),
+                spouseDate.validate(),
 
-        // groom
-        proceed.add(groomName.validate());
-        proceed.add(groomMobile.validate());
-        proceed.add(groomMobile.validate());
-        proceed.add(groomEmail.validate());
-        proceed.add(groomDate.validate());
+                // groom
+                groomName.validate(),
+                groomMobile.validate(),
+                groomMobile.validate(),
+                groomEmail.validate(),
+                groomDate.validate()
+        });
 
         if (proceed.shouldProceed()) {
             stepTabs.getSelectionModel().select(venueTab);
@@ -413,9 +422,11 @@ public class NewController implements Initializable {
     public void addToFarewellGroup(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
-        proceed.add(farewellName.validate());
-        proceed.add(farewellMobile.validate());
-        proceed.add(farewellEmail.validate());
+        proceed.addAll(new boolean[] {
+                farewellName.validate(),
+                farewellMobile.validate(),
+                farewellEmail.validate()
+        });
 
         if (proceed.shouldProceed()) {
 
@@ -437,7 +448,7 @@ public class NewController implements Initializable {
         if (farewellList.getItems().size() > 0) {
             stepTabs.getSelectionModel().select(venueTab);
         } else {
-            farewellCount.setText("MUST BE GREATER THAN 0");
+            new AlertDialog("No one to send off makes a dull farewell").show();
         }
     }
 
@@ -456,9 +467,11 @@ public class NewController implements Initializable {
     public void addToContactsGroup(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
-        proceed.add(newContactName.validate());
-        proceed.add(newContactMobile.validate());
-        proceed.add(newContactEmail.validate());
+        proceed.addAll(new boolean[] {
+                newContactName.validate(),
+                newContactMobile.validate(),
+                newContactEmail.validate()
+        });
 
         if (proceed.shouldProceed()) {
 
@@ -477,7 +490,7 @@ public class NewController implements Initializable {
         if (contactsList.getItems().size() > 0) {
             stepTabs.getSelectionModel().select(decorationTab);
         } else {
-            contactsCount.setText("MUST BE GREATER THAN 0");
+            new AlertDialog("No invitees makes a dull party").show();
         }
     }
 
@@ -550,11 +563,18 @@ public class NewController implements Initializable {
                 + Double.parseDouble(decorationTotal.getText()))
         );
 
+        // tab
         stepTabs.getSelectionModel().select(completeTab);
-        createAndAdd();
+
+        // create party values
+        Party party = createParty();
+
+        // database actions
+        Main.database.insertParty(party);
+        PartiesController.instance.update();
     }
 
-    public void createAndAdd() {
+    public Party createParty() {
 
         Party party = null;
 
@@ -603,7 +623,7 @@ public class NewController implements Initializable {
         }
 
         if (party == null)
-            return;
+            return party;
 
         // generics
         party.setLabel(labelField.getText());
@@ -638,7 +658,6 @@ public class NewController implements Initializable {
         System.out.println(Arrays.toString(decos.toArray()));
         party.setAddons(decos);
 
-        Main.database.insertParty(party);
-        PartiesController.instance.update();
+        return party;
     }
 }
