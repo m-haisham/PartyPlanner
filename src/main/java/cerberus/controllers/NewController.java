@@ -4,6 +4,7 @@ import cerberus.Main;
 import cerberus.helper.date.DateTimeHelper;
 import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
+import cerberus.helper.navigation.Navigator;
 import cerberus.helper.proceed.Proceeder;
 import cerberus.models.dialog.AlertDialog;
 import cerberus.models.list.QuantifiedListItem;
@@ -46,6 +47,8 @@ import java.util.stream.Collectors;
 public class NewController implements Initializable {
 
     public static NewController instance;
+
+    private Navigator navigator;
 
     public JFXTabPane stepTabs;
     public Tab basicTab;
@@ -145,6 +148,7 @@ public class NewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
 
+        navigator = new Navigator(stepTabs);
         RequiredFieldValidator requiredFieldValidator = new RequiredFieldValidator();
         requiredFieldValidator.setMessage("This field is required!");
 
@@ -334,7 +338,7 @@ public class NewController implements Initializable {
         }
 
         if (proceed.shouldProceed()) {
-            stepTabs.getSelectionModel().selectNext();
+            navigator.push(organiserContactTab);
         }
     }
 
@@ -352,16 +356,16 @@ public class NewController implements Initializable {
 
             switch (partyTypeBox.getValue()){
                 case "Birthday":
-                    stepTabs.getSelectionModel().select(birthdayTab);
+                    navigator.push(birthdayTab);
                     break;
                 case "Wedding":
-                    stepTabs.getSelectionModel().select(weddingTab);
+                    navigator.push(weddingTab);
                     break;
                 case "Celebration":
-                    stepTabs.getSelectionModel().select(celebrationTab);
+                    navigator.push(celebrationTab);
                     break;
                 case "Farewell":
-                    stepTabs.getSelectionModel().select(farewellTab);
+                    navigator.push(farewellTab);
                     break;
                 default:
                     break;
@@ -380,7 +384,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            stepTabs.getSelectionModel().select(venueTab);
+            navigator.push(venueTab);
         }
 
     }
@@ -405,7 +409,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            stepTabs.getSelectionModel().select(venueTab);
+            navigator.push(venueTab);
         }
     }
 
@@ -415,7 +419,7 @@ public class NewController implements Initializable {
         proceed.add(celebrationMessage.validate());
 
         if (proceed.shouldProceed()) {
-            stepTabs.getSelectionModel().select(venueTab);
+            navigator.push(venueTab);
         }
     }
 
@@ -446,7 +450,7 @@ public class NewController implements Initializable {
 
     public void farewellValidateAndProceed(ActionEvent event) {
         if (farewellList.getItems().size() > 0) {
-            stepTabs.getSelectionModel().select(venueTab);
+            navigator.push(venueTab);
         } else {
             new AlertDialog("No one to send off makes a dull farewell").show();
         }
@@ -461,7 +465,7 @@ public class NewController implements Initializable {
         selectedVenue = venueTable.getSelectionModel().getSelectedItem().getValue().getVenue();
         venueWarning.setText("");
 
-        stepTabs.getSelectionModel().select(contactsTab);
+        navigator.push(contactsTab);
     }
 
     public void addToContactsGroup(ActionEvent event) {
@@ -488,7 +492,7 @@ public class NewController implements Initializable {
 
     public void contactsValidateAndProceed(ActionEvent event) {
         if (contactsList.getItems().size() > 0) {
-            stepTabs.getSelectionModel().select(decorationTab);
+            navigator.push(decorationTab);
         } else {
             new AlertDialog("No invitees makes a dull party").show();
         }
@@ -526,7 +530,7 @@ public class NewController implements Initializable {
             prepaymentTotal.setText(String.valueOf(totalCost));
             prepaymentPercent.setText(String.valueOf(totalCost * Party.prepaymentPercent));
 
-            stepTabs.getSelectionModel().select(prepaymentTab);
+            navigator.push(prepaymentTab);
         }
     }
 
@@ -564,7 +568,7 @@ public class NewController implements Initializable {
         );
 
         // tab
-        stepTabs.getSelectionModel().select(completeTab);
+        navigator.push(completeTab);
 
         // create party values
         Party party = createParty();
