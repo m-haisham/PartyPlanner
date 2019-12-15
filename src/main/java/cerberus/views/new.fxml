@@ -948,7 +948,7 @@
                                                             </VBox>
                                                             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
                                                                <children>
-                                                                  <Text fx:id="completeDecorationsCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="decorations cost" />
+                                                                  <Text fx:id="completeDecorationsCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="addons cost" />
                                                                </children>
                                                             </VBox>
                                                          </children>

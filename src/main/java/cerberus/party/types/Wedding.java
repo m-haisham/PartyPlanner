@@ -6,8 +6,6 @@ import org.dizitart.no2.Document;
 import org.dizitart.no2.mapper.Mappable;
 import org.dizitart.no2.mapper.NitriteMapper;
 
-import java.io.Serializable;
-
 public class Wedding extends Party implements Mappable {
 
     private Person wife;
@@ -66,7 +64,7 @@ public class Wedding extends Party implements Mappable {
             this.created = b.getCreated();
             this.setContacts(b.getContacts());
             this.setContact(b.getContact());
-            this.setDecorations(b.getDecorations());
+            this.setAddons(b.getAddons());
 
             // specific
             this.setWife(b.getWife());

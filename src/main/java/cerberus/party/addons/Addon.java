@@ -1,10 +1,10 @@
-package cerberus.party.decorations;
+package cerberus.party.addons;
 
-public class Decoration {
+public class Addon {
     private String label;
     private double cost;
 
-    public Decoration(String label, double cost) {
+    public Addon(String label, double cost) {
         this.label = label;
         this.cost = cost;
     }

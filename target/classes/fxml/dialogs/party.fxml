@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-radius: 0;" styleClass="card" stylesheets="@../../styles/base.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <JFXTabPane fx:id="tabPane" BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab text="Details">
+              <content>
+                  <BorderPane>
+                     <center>
+                        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                 </HBox.margin>
+                                 <center>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="card-outlined" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Text fx:id="label" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="TITLE">
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" styleClass="border-botton-1" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="VENUE">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="53.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="ADDRESS" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="venueAddress" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="75.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="COST" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="venueCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="78.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" styleClass="border-botton-1" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TIME">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="78.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="FROM" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="from" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="190.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TO" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="to" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="212.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="DURATION" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="duration" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="156.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" styleClass="border-botton-1" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="CONTACT">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="234.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="NAME" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="orgName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="295.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="MOBILE" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="orgMobile" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="327.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="EMAIL" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="orgEmail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="266.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" styleClass="border-botton-1" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="OTHER">
+                                                         <VBox.margin>
+                                                            <Insets bottom="10.0" />
+                                                         </VBox.margin>
+                                                      </Text>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="354.0" prefHeight="22.0" prefWidth="320.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="CREATED" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Text fx:id="created" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets top="10.0" />
+                                       </BorderPane.margin>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" styleClass="card-outlined" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </HBox.margin>
+                                 <center>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="INVITEES" />
+                                                <Text fx:id="inviteeCount" layoutX="195.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="0">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <JFXListView fx:id="contactsList" VBox.vgrow="ALWAYS">
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </JFXListView>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                     </center>
+                  </BorderPane>
+              </content>
+            </Tab>
+            <Tab text="Addons">
+              <content>
+                  <BorderPane>
+                     <center>
+                        <VBox>
+                           <BorderPane.margin>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="320.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="22.0" prefWidth="75.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="COST" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="64.0">
+                                       <children>
+                                          <Text fx:id="addonsCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <JFXListView fx:id="decorationsList" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+              </content>
+            </Tab>
+            <Tab text="Cost">
+               <content>
+                  <BorderPane>
+                     <center>
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="350.0" styleClass="card-outlined">
+                           <BorderPane.margin>
+                              <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <Text fx:id="label1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subheading" text="COST">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <HBox alignment="CENTER_LEFT" prefHeight="22.0" prefWidth="320.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="VENUE" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="cVenueCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="52.0" prefHeight="22.0" prefWidth="320.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="ADDONS" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="cAddonsCost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="74.0" prefHeight="22.0" prefWidth="320.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="PAID" />
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="cPaid" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="insert" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <VBox alignment="CENTER" prefHeight="40.0" prefWidth="350.0" styleClass="border-botton-1">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TOTAL">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="112.0" prefHeight="22.0" prefWidth="320.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="22.0" prefWidth="170.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Text fx:id="cTotalCost" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18;" styleClass="primary-label-14" text="insert" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </center>
+</BorderPane>

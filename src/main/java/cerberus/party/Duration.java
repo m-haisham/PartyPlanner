@@ -7,7 +7,7 @@ import org.dizitart.no2.mapper.NitriteMapper;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Duration implements Mappable {
+public class Duration {
     private LocalDateTime from;
     private LocalDateTime to;
 
@@ -40,21 +40,7 @@ public class Duration implements Mappable {
         this.to = to;
     }
 
-    @Override
-    public Document write(NitriteMapper nitriteMapper) {
-        Document document = new Document();
-
-        document.put("from", from.toString());
-        document.put("to", to.toString());
-
-        return document;
-    }
-
-    @Override
-    public void read(NitriteMapper nitriteMapper, Document document) {
-        if (document != null) {
-            setFrom(LocalDateTime.parse((String) document.get("from")));
-            setTo(LocalDateTime.parse((String) document.get("to")));
-        }
+    public DateTimeDifference difference() {
+        return new DateTimeDifference(this.from, this.to);
     }
 }

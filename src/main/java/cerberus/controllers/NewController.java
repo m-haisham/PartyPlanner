@@ -6,13 +6,12 @@ import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
 import cerberus.helper.proceed.Proceeder;
 import cerberus.models.list.QuantifiedListItem;
-import cerberus.models.list.SelectableListItem;
 import cerberus.models.list.SimpleListItem;
 import cerberus.models.table.VenueItem;
 import cerberus.party.*;
-import cerberus.party.decorations.Decoration;
-import cerberus.party.decorations.DecorationFactory;
-import cerberus.party.decorations.QuantifiedDecoration;
+import cerberus.party.addons.Addon;
+import cerberus.party.addons.AddonFactory;
+import cerberus.party.addons.QuantifiedAddon;
 import cerberus.party.types.Birthday;
 import cerberus.party.types.Celebration;
 import cerberus.party.types.Farewell;
@@ -32,13 +31,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -187,11 +186,11 @@ public class NewController implements Initializable {
     }
 
     private void initDecorationFields() {
-        ArrayList<Decoration> allDecorations = DecorationFactory.availableDecorationsFor(new Farewell("", new Venue("", 0), new Duration(LocalDateTime.now(), LocalDateTime.now())));
+        ArrayList<Addon> allAddons = AddonFactory.availableDecorationsFor(new Farewell("", new Venue("", 0), new Duration(LocalDateTime.now(), LocalDateTime.now())));
 
-        decorations = allDecorations
+        decorations = allAddons
                 .stream()
-                .map(decoration -> new QuantifiedListItem(decoration.getLabel(), "", String.valueOf(decoration.getCost())))
+                .map(addon -> new QuantifiedListItem(addon.getLabel(), "", String.valueOf(addon.getCost())))
                 .collect(Collectors.toList());
 
         decorations.forEach(item -> {
@@ -623,22 +622,23 @@ public class NewController implements Initializable {
         ));
 
         // decorations
-        ArrayList<QuantifiedDecoration> decos = new ArrayList<>();
+        ArrayList<QuantifiedAddon> decos = new ArrayList<>();
         decorations.forEach(listItem -> {
 
             if (listItem.getTextField().getText().equals(""))
                 return;
 
-            decos.add(new QuantifiedDecoration(
+            decos.add(new QuantifiedAddon(
                     listItem.getTitle(),
                     Double.parseDouble(listItem.getLeading()),
                     Integer.parseInt(listItem.getTextField().getText())
             ));
         });
 
-        party.setDecorations(decos);
+        System.out.println(Arrays.toString(decos.toArray()));
+        party.setAddons(decos);
 
         Main.database.insertParty(party);
-        PartyListController.instance.update();
+        PartiesController.instance.update();
     }
 }

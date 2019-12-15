@@ -9,7 +9,6 @@ import org.dizitart.no2.Document;
 import org.dizitart.no2.mapper.Mappable;
 import org.dizitart.no2.mapper.NitriteMapper;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Farewell extends Party implements Mappable {
@@ -56,7 +55,7 @@ public class Farewell extends Party implements Mappable {
             this.created = b.getCreated();
             this.setContacts(b.getContacts());
             this.setContact(b.getContact());
-            this.setDecorations(b.getDecorations());
+            this.setAddons(b.getAddons());
 
             // specific
             this.setGroup(b.getGroup());

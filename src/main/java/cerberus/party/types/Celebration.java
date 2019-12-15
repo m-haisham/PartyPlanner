@@ -8,8 +8,6 @@ import org.dizitart.no2.Document;
 import org.dizitart.no2.mapper.Mappable;
 import org.dizitart.no2.mapper.NitriteMapper;
 
-import java.io.Serializable;
-
 public class Celebration extends Party implements Mappable {
 
     private String message;
@@ -59,7 +57,7 @@ public class Celebration extends Party implements Mappable {
             this.created = b.getCreated();
             this.setContacts(b.getContacts());
             this.setContact(b.getContact());
-            this.setDecorations(b.getDecorations());
+            this.setAddons(b.getAddons());
 
             // specific
             this.setMessage(b.getMessage());

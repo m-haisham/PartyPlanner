@@ -1,8 +1,10 @@
 package cerberus.controllers;
 
 import cerberus.Main;
+import cerberus.models.dialog.PartyInfo;
 import cerberus.models.list.PartyItem;
 import cerberus.party.Party;
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
@@ -10,18 +12,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class PartyListController implements Initializable {
+public class PartiesController implements Initializable {
 
-    public static PartyListController instance;
+    public static PartiesController instance;
 
     public JFXListView<PartyItem> eventsList;
     public VBox partyDetail;
@@ -57,7 +57,9 @@ public class PartyListController implements Initializable {
 
         eventsList.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
-                System.out.println(eventsList.getSelectionModel().getSelectedItem().getLabel());
+                PartyInfo info = new PartyInfo(eventsList.getSelectionModel().getSelectedItem().getParty());
+                new JFXDialog(BaseController.instance.root, info.getRoot(), JFXDialog.DialogTransition.CENTER).show();
+                info.set();
             }
         });
 

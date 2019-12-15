@@ -1,6 +1,6 @@
 package cerberus.party;
 
-import cerberus.party.decorations.QuantifiedDecoration;
+import cerberus.party.addons.QuantifiedAddon;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +18,7 @@ public class Party {
     protected LocalDateTime created;
     private ArrayList<Contact> contacts;
     private Contact contact;
-    private ArrayList<QuantifiedDecoration> decorations;
+    private ArrayList<QuantifiedAddon> addons;
 
     public Party(String label, Venue venue, Duration on) {
         this.label = label;
@@ -28,7 +28,7 @@ public class Party {
         paidPercentile = 0;
         created = LocalDateTime.now();
         contacts = new ArrayList<>();
-        decorations = new ArrayList<>();
+        addons = new ArrayList<>();
     }
 
     public String getLabel() {
@@ -71,12 +71,24 @@ public class Party {
         this.contacts = contacts;
     }
 
-    public ArrayList<QuantifiedDecoration> getDecorations() {
-        return decorations;
+    public ArrayList<QuantifiedAddon> getAddons() {
+        return addons;
     }
 
-    public void setDecorations(ArrayList<QuantifiedDecoration> decorations) {
-        this.decorations = decorations;
+    public void setAddons(ArrayList<QuantifiedAddon> addons) {
+        this.addons = addons;
+    }
+
+    public double getAddonsCost() {
+        if (addons.size() <= 0)
+            return 0;
+
+        double total = 0;
+        for (QuantifiedAddon addon : addons) {
+            total += addon.getQuantity() * addon.getCost();
+        }
+
+        return total;
     }
 
     public Contact getContact() {
@@ -93,5 +105,9 @@ public class Party {
 
     public void setPaidPercentile(double paidPercentile) {
         this.paidPercentile = paidPercentile;
+    }
+
+    public double getTotalCost() {
+        return venue.getCost() + getAddonsCost();
     }
 }

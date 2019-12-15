@@ -5,13 +5,9 @@ import cerberus.party.Duration;
 import cerberus.party.Party;
 import cerberus.party.Person;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import org.dizitart.no2.Document;
 import org.dizitart.no2.mapper.Mappable;
 import org.dizitart.no2.mapper.NitriteMapper;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Birthday extends Party implements Mappable {
 
@@ -83,7 +79,7 @@ public class Birthday extends Party implements Mappable {
             this.created = b.getCreated();
             this.setContacts(b.getContacts());
             this.setContact(b.getContact());
-            this.setDecorations(b.getDecorations());
+            this.setAddons(b.getAddons());
 
             // specific
             this.setPerson(b.getPerson());
