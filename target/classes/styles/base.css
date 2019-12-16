@@ -159,6 +159,17 @@
   -fx-padding: 10 15 10 15;
 }
 
+.back-button {
+  -fx-font-family: "Roboto Black";
+  -fx-font-size: 15;
+  -fx-pref-height: 30;
+
+  -fx-background-color: rgb(99, 99, 99);
+  -fx-background-radius: 5;
+
+  -fx-padding: 10 15 10 15;
+}
+
 .proceed-button .jfx-rippler {
   -jfx-rippler-fill: #ffceb9;
 }
@@ -349,15 +360,4 @@
 .alert-message {
   -fx-font-size: 15;
   -fx-text-fill: #ffffff;
-}
-
-.alert-button {
-  -fx-font-family: "Roboto Black";
-  -fx-font-size: 14;
-  -fx-pref-height: 27;
-
-  -fx-background-color: #ff3300;
-  -fx-background-radius: 5;
-
-  -fx-padding: 10 15 10 15;
 }

@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class SpecificPartyInfo {
     @FXML private Text celebrantAge;
 
     // FAREWELL
-    @FXML private JFXListView<SimpleListItem> farewellGroup;
+    @FXML private JFXListView<VBox> farewellGroup;
 
     // CELEBRATION
     @FXML private Label celebrationText;
@@ -77,7 +78,7 @@ public class SpecificPartyInfo {
                 farewellGroup.getItems().add(new SimpleListItem(
                         contact.getName(),
                         contact.getEmail()
-                ));
+                ).asNode());
         } else if (party.getClass() == Celebration.class) {
             assert party instanceof Celebration;
             tab = celebration;

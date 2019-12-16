@@ -49,6 +49,7 @@ public class NewController implements Initializable {
     public static NewController instance;
 
     private Navigator navigator;
+    private Party party;
 
     public JFXTabPane stepTabs;
     public Tab basicTab;
@@ -143,6 +144,9 @@ public class NewController implements Initializable {
     public Text completeVenueCost;
     public Text completeDecorationsCost;
     public Text completeTotalCost;
+
+    public JFXButton finalizeBack;
+    public JFXButton finalizeComplete;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -318,6 +322,11 @@ public class NewController implements Initializable {
         partyTypeBox.getItems().add(Wedding.class.getSimpleName());
     }
 
+    public void jumpPreviousTab(ActionEvent event) {
+        Tab pop = navigator.pop();
+        stepTabs.getSelectionModel().select(pop);
+    }
+
     public void basicValidateAndProceed(ActionEvent event) {
         Proceeder proceed = new Proceeder();
 
@@ -334,11 +343,12 @@ public class NewController implements Initializable {
         if (from.isEqual(to) || from.isAfter(to)) {
             updateTimeDifference(event);
             durationText.setText(durationText.getText() + ", must be greater than 0.");
+            new AlertDialog("Negative time ... :O").show();
             proceed.add(false);
         }
 
         if (proceed.shouldProceed()) {
-            navigator.push(organiserContactTab);
+            navigator.push(basicTab, organiserContactTab);
         }
     }
 
@@ -356,16 +366,16 @@ public class NewController implements Initializable {
 
             switch (partyTypeBox.getValue()){
                 case "Birthday":
-                    navigator.push(birthdayTab);
+                    navigator.push(organiserContactTab, birthdayTab);
                     break;
                 case "Wedding":
-                    navigator.push(weddingTab);
+                    navigator.push(organiserContactTab, weddingTab);
                     break;
                 case "Celebration":
-                    navigator.push(celebrationTab);
+                    navigator.push(organiserContactTab, celebrationTab);
                     break;
                 case "Farewell":
-                    navigator.push(farewellTab);
+                    navigator.push(organiserContactTab, farewellTab);
                     break;
                 default:
                     break;
@@ -384,7 +394,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            navigator.push(venueTab);
+            navigator.push(birthdayTab, venueTab);
         }
 
     }
@@ -409,7 +419,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            navigator.push(venueTab);
+            navigator.push(weddingTab, venueTab);
         }
     }
 
@@ -419,7 +429,7 @@ public class NewController implements Initializable {
         proceed.add(celebrationMessage.validate());
 
         if (proceed.shouldProceed()) {
-            navigator.push(venueTab);
+            navigator.push(celebrationTab, venueTab);
         }
     }
 
@@ -450,7 +460,7 @@ public class NewController implements Initializable {
 
     public void farewellValidateAndProceed(ActionEvent event) {
         if (farewellList.getItems().size() > 0) {
-            navigator.push(venueTab);
+            navigator.push(farewellTab, venueTab);
         } else {
             new AlertDialog("No one to send off makes a dull farewell").show();
         }
@@ -465,7 +475,7 @@ public class NewController implements Initializable {
         selectedVenue = venueTable.getSelectionModel().getSelectedItem().getValue().getVenue();
         venueWarning.setText("");
 
-        navigator.push(contactsTab);
+        navigator.push(venueTab, contactsTab);
     }
 
     public void addToContactsGroup(ActionEvent event) {
@@ -492,7 +502,7 @@ public class NewController implements Initializable {
 
     public void contactsValidateAndProceed(ActionEvent event) {
         if (contactsList.getItems().size() > 0) {
-            navigator.push(decorationTab);
+            navigator.push(contactsTab, decorationTab);
         } else {
             new AlertDialog("No invitees makes a dull party").show();
         }
@@ -530,7 +540,7 @@ public class NewController implements Initializable {
             prepaymentTotal.setText(String.valueOf(totalCost));
             prepaymentPercent.setText(String.valueOf(totalCost * Party.prepaymentPercent));
 
-            navigator.push(prepaymentTab);
+            navigator.push(decorationTab, prepaymentTab);
         }
     }
 
@@ -568,14 +578,10 @@ public class NewController implements Initializable {
         );
 
         // tab
-        navigator.push(completeTab);
+        navigator.push(prepaymentTab, completeTab);
 
         // create party values
-        Party party = createParty();
-
-        // database actions
-        Main.database.insertParty(party);
-        PartiesController.instance.update();
+        this.party = createParty();
     }
 
     public Party createParty() {
@@ -663,5 +669,16 @@ public class NewController implements Initializable {
         party.setAddons(decos);
 
         return party;
+    }
+
+    public void finalizeAndInsert(ActionEvent event) {
+        // database actions
+        Main.database.insertParty(party);
+        PartiesController.instance.update();
+
+        // buttons
+        finalizeBack.setDisable(true);
+        finalizeComplete.setDisable(true);
+        finalizeComplete.setText("ADDED");
     }
 }

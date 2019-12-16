@@ -147,11 +147,19 @@
                                           </JFXTextField>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#organiserValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton layoutX="10.0" layoutY="10.0" onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#organiserValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="35.0" />
@@ -214,11 +222,19 @@
                                           </HBox>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#birthdayValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#birthdayValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="35.0" />
@@ -340,11 +356,19 @@
                               </HBox>
                               <BorderPane>
                                  <center>
-                                    <JFXButton onAction="#weddingValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                    <HBox alignment="CENTER">
                                        <BorderPane.margin>
                                           <Insets />
                                        </BorderPane.margin>
-                                    </JFXButton>
+                                       <children>
+                                          <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton onAction="#weddingValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                       </children>
+                                    </HBox>
                                  </center>
                                  <VBox.margin>
                                     <Insets top="35.0" />
@@ -384,11 +408,19 @@
                                           </JFXTextArea>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#celebrationValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#celebrationValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="35.0" />
@@ -501,11 +533,19 @@
                                     <Insets top="35.0" />
                                  </VBox.margin>
                                  <center>
-                                    <JFXButton onAction="#farewellValidateAndProceed" styleClass="proceed-button" text="PROCEED" BorderPane.alignment="CENTER">
+                                    <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                                        <BorderPane.margin>
                                           <Insets />
                                        </BorderPane.margin>
-                                    </JFXButton>
+                                       <children>
+                                          <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton onAction="#farewellValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                       </children>
+                                    </HBox>
                                  </center>
                               </BorderPane>
                            </children>
@@ -547,11 +587,19 @@
                                           </HBox>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#venueValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#venueValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="20.0" />
@@ -664,11 +712,19 @@
                                     <Insets top="35.0" />
                                  </VBox.margin>
                                  <center>
-                                    <JFXButton onAction="#contactsValidateAndProceed" styleClass="proceed-button" text="PROCEED" BorderPane.alignment="CENTER">
+                                    <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                                        <BorderPane.margin>
                                           <Insets />
                                        </BorderPane.margin>
-                                    </JFXButton>
+                                       <children>
+                                          <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton onAction="#contactsValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                       </children>
+                                    </HBox>
                                  </center>
                               </BorderPane>
                            </children>
@@ -715,11 +771,19 @@
                                           </HBox>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#decorationValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#decorationValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="20.0" />
@@ -804,11 +868,19 @@
                                           </HBox>
                                           <BorderPane>
                                              <center>
-                                                <JFXButton onAction="#prepaymentValidateAndProceed" styleClass="proceed-button" text="PROCEED">
+                                                <HBox alignment="CENTER">
                                                    <BorderPane.margin>
                                                       <Insets />
                                                    </BorderPane.margin>
-                                                </JFXButton>
+                                                   <children>
+                                                      <JFXButton onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton onAction="#prepaymentValidateAndProceed" styleClass="proceed-button" text="PROCEED" />
+                                                   </children>
+                                                </HBox>
                                              </center>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
@@ -1061,6 +1133,23 @@
                                                 </VBox>
                                              </children>
                                           </HBox>
+                                          <BorderPane>
+                                             <center>
+                                                <HBox alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets />
+                                                   </BorderPane.margin>
+                                                   <children>
+                                                      <JFXButton fx:id="finalizeBack" onAction="#jumpPreviousTab" styleClass="back-button" text="BACK">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton fx:id="finalizeComplete" onAction="#finalizeAndInsert" styleClass="proceed-button" text="FINALIZE" />
+                                                   </children>
+                                                </HBox>
+                                             </center>
+                                          </BorderPane>
                                        </children>
                                     </VBox>
                                  </center>

@@ -24,7 +24,12 @@ public class Navigator extends Stack<Tab> {
     @Override
     public Tab push(Tab tab) {
         Tab push = super.push(tab);
-        pane.getSelectionModel().select(push);
         return push;
+    }
+
+    public Tab push(Tab current, Tab next) {
+        push(current);
+        pane.getSelectionModel().select(next);
+        return next;
     }
 }
