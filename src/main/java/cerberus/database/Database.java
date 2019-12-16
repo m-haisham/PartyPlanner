@@ -1,6 +1,7 @@
 package cerberus.database;
 
 import cerberus.party.Party;
+import cerberus.party.filter.PaidPercent;
 import cerberus.party.filter.PartyType;
 import cerberus.party.types.*;
 import org.dizitart.no2.Nitrite;
@@ -65,11 +66,7 @@ public class Database {
         return all;
     }
 
-    public ArrayList<Party> getAll(boolean prepaid) {
-        return getAll(prepaid, PartyType.All);
-    }
-
-    public ArrayList<Party> getAll(boolean prepaid, PartyType type) {
+    public ArrayList<Party> getAll(PaidPercent paidPercent, PartyType type) {
         ArrayList<Party> paid = new ArrayList<>();
         ArrayList<Party> unpaid = new ArrayList<>();
 
@@ -102,9 +99,15 @@ public class Database {
 
         }
 
-        ArrayList<Party> out = paid;
-        if (!prepaid)
+        ArrayList<Party> out = new ArrayList<>();
+        if (paidPercent == PaidPercent.p15)
+            out = paid;
+        else if (paidPercent == PaidPercent.p0)
+            out = unpaid;
+        else {
+            out.addAll(paid);
             out.addAll(unpaid);
+        }
 
         if (type == PartyType.All)
             return out;

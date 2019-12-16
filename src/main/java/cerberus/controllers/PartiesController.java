@@ -4,6 +4,7 @@ import cerberus.Main;
 import cerberus.models.dialog.PartyInfo;
 import cerberus.models.list.PartyItem;
 import cerberus.party.Party;
+import cerberus.party.filter.PaidPercent;
 import cerberus.party.filter.PartyType;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
@@ -29,7 +30,7 @@ public class PartiesController implements Initializable {
 
     public JFXListView<PartyItem> eventsList;
     public VBox partyDetail;
-    public JFXComboBox<String> filterPaid;
+    public JFXComboBox<PaidPercent> filterPaid;
     public JFXComboBox<PartyType> filterPartyType;
 
 
@@ -37,17 +38,30 @@ public class PartiesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
 
-        // dilter options
-        filterPaid.setItems(FXCollections.observableArrayList(
-                "ALL",
-                "NONE",
-                "15%"
-        ));
-        filterPaid.setValue("ALL");
+        // filter options
+        filterPaid.setCellFactory(new Callback<ListView<PaidPercent>, ListCell<PaidPercent>>() {
+            @Override
+            public ListCell<PaidPercent> call(ListView<PaidPercent> param) {
+                return new JFXListCell<PaidPercent>() {
+                    @Override
+                    protected void updateItem(PaidPercent item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            if (item == PaidPercent.All)
+                                setText(item.toString());
+                            else {
+                                setText(item.toString().substring(1).concat("%"));
+                            }
+                        }
+                    }
+                };
+            }
+        });
+        filterPaid.getItems().setAll(Arrays.asList(PaidPercent.values()));
+        filterPaid.setValue(PaidPercent.All);
         filterPaid.setOnAction(event -> resetPartyList());
 
 
-        filterPartyType.getItems().setAll(Arrays.asList(PartyType.values()));
         filterPartyType.setCellFactory(new Callback<ListView<PartyType>, ListCell<PartyType>>() {
             @Override
             public ListCell<PartyType> call(ListView<PartyType> param) {
@@ -62,6 +76,7 @@ public class PartiesController implements Initializable {
                 };
             }
         });
+        filterPartyType.getItems().setAll(Arrays.asList(PartyType.values()));
         filterPartyType.setValue(PartyType.All);
         filterPartyType.setOnAction(event -> resetPartyList());
         initPartyList();
@@ -113,11 +128,7 @@ public class PartiesController implements Initializable {
         ArrayList<Party> parties;
 
         PartyType type = filterPartyType.getValue();
-        if (filterPaid.getValue().equals("ALL") && type == PartyType.All) {
-            parties = Main.database.getAll();
-        } else {
-            parties = Main.database.getAll(filterPaid.getValue().equals("15%"), type);
-        }
+        parties = Main.database.getAll(filterPaid.getValue(), type);
 
         resetPartyList(parties);
 
