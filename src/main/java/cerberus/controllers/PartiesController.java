@@ -4,6 +4,8 @@ import cerberus.Main;
 import cerberus.models.dialog.PartyInfo;
 import cerberus.models.list.PartyItem;
 import cerberus.party.Party;
+import cerberus.party.filter.PartyType;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
@@ -17,7 +19,9 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class PartiesController implements Initializable {
 
@@ -25,15 +29,42 @@ public class PartiesController implements Initializable {
 
     public JFXListView<PartyItem> eventsList;
     public VBox partyDetail;
+    public JFXComboBox<String> filterPaid;
+    public JFXComboBox<PartyType> filterPartyType;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
-        initPartyList();
-    }
 
-    public void update() {
-        resetPartyList(Main.database.getAll());
+        // dilter options
+        filterPaid.setItems(FXCollections.observableArrayList(
+                "ALL",
+                "NONE",
+                "15%"
+        ));
+        filterPaid.setValue("ALL");
+        filterPaid.setOnAction(event -> resetPartyList());
+
+
+        filterPartyType.getItems().setAll(Arrays.asList(PartyType.values()));
+        filterPartyType.setCellFactory(new Callback<ListView<PartyType>, ListCell<PartyType>>() {
+            @Override
+            public ListCell<PartyType> call(ListView<PartyType> param) {
+                return new JFXListCell<PartyType>() {
+                    @Override
+                    protected void updateItem(PartyType item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (!empty && item != null) {
+                            setText(item.toString());
+                        }
+                    }
+                };
+            }
+        });
+        filterPartyType.setValue(PartyType.All);
+        filterPartyType.setOnAction(event -> resetPartyList());
+        initPartyList();
     }
 
     public void initPartyList() {
@@ -63,19 +94,32 @@ public class PartiesController implements Initializable {
             }
         });
 
-        resetPartyList(Main.database.getAll());
+        resetPartyList();
     }
 
     public void resetPartyList(ArrayList<Party> parties) {
 
         // Erase
-        eventsList.setItems(FXCollections.observableArrayList());
+        eventsList.setItems(FXCollections.observableArrayList(
+                parties
+                        .stream()
+                        .map(PartyItem::new)
+                        .collect(Collectors.toList())));
 
-        for (Party party : parties) {
+    }
 
-            PartyItem item = new PartyItem(party);
-            eventsList.getItems().add(item);
+    public void resetPartyList() {
+
+        ArrayList<Party> parties;
+
+        PartyType type = filterPartyType.getValue();
+        if (filterPaid.getValue().equals("ALL") && type == PartyType.All) {
+            parties = Main.database.getAll();
+        } else {
+            parties = Main.database.getAll(filterPaid.getValue().equals("15%"), type);
         }
+
+        resetPartyList(parties);
 
     }
 }

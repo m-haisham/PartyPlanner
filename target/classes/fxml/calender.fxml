@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,13 +16,46 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </BorderPane.margin>
          <children>
-            <HBox prefHeight="50.0" prefWidth="944.0" styleClass="card">
+            <HBox prefHeight="55.0" prefWidth="945.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
-               </VBox.margin></HBox>
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="944.0" styleClass="card">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="FILTER BY">
+                           <HBox.margin>
+                              <Insets left="15.0" right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="PAID" />
+                              <JFXComboBox fx:id="filterPaid" prefHeight="28.0" prefWidth="182.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="111.0" layoutY="15.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="primary-label-14" text="PARTY TYPE" />
+                              <JFXComboBox fx:id="filterPartyType" prefHeight="28.0" prefWidth="182.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets />
                </VBox.margin>
                <children>
                   <AnchorPane prefHeight="490.0" prefWidth="492.0" HBox.hgrow="ALWAYS">

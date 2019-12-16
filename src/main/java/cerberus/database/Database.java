@@ -1,10 +1,8 @@
 package cerberus.database;
 
 import cerberus.party.Party;
-import cerberus.party.types.Birthday;
-import cerberus.party.types.Celebration;
-import cerberus.party.types.Farewell;
-import cerberus.party.types.Wedding;
+import cerberus.party.filter.PartyType;
+import cerberus.party.types.*;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
@@ -68,6 +66,10 @@ public class Database {
     }
 
     public ArrayList<Party> getAll(boolean prepaid) {
+        return getAll(prepaid, PartyType.All);
+    }
+
+    public ArrayList<Party> getAll(boolean prepaid, PartyType type) {
         ArrayList<Party> paid = new ArrayList<>();
         ArrayList<Party> unpaid = new ArrayList<>();
 
@@ -100,10 +102,22 @@ public class Database {
 
         }
 
-        if (prepaid)
-            return paid;
-        else
-            return unpaid;
+        ArrayList<Party> out = paid;
+        if (!prepaid)
+            out.addAll(unpaid);
+
+        if (type == PartyType.All)
+            return out;
+        else {
+            if (type == PartyType.Birthday) return Party.filter(out, Birthday.class);
+            if (type == PartyType.Celebration) return Party.filter(out, Celebration.class);
+            if (type == PartyType.Farewell) return Party.filter(out, Farewell.class);
+            if (type == PartyType.Wedding) return Party.filter(out, Wedding.class);
+        }
+
+        // empty
+        System.out.println("ERROR");
+        return new ArrayList<>();
     }
 
     public Nitrite getDb() {

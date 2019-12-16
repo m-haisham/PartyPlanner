@@ -1145,7 +1145,12 @@
                                                             <Insets right="10.0" />
                                                          </HBox.margin>
                                                       </JFXButton>
-                                                      <JFXButton fx:id="finalizeComplete" onAction="#finalizeAndInsert" styleClass="proceed-button" text="FINALIZE" />
+                                                      <JFXButton onAction="#showFullDetails" styleClass="proceed-button" text="FULL DETAILS">
+                                                         <HBox.margin>
+                                                            <Insets right="10.0" />
+                                                         </HBox.margin>
+                                                      </JFXButton>
+                                                      <JFXButton fx:id="finalizeComplete" layoutX="296.0" layoutY="10.0" onAction="#finalizeAndInsert" styleClass="proceed-button" text="FINALIZE" />
                                                    </children>
                                                 </HBox>
                                              </center>

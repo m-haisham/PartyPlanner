@@ -105,7 +105,6 @@ public class PartyInfo {
         decorationsList.setItems(FXCollections.observableArrayList(
                 party.getAddons().stream()
                         .map(addon -> {
-                            System.out.println(addon.getCost());
                             return new TrailingListItem(
                                     String.valueOf(addon.getQuantity()),
                                     addon.getLabel(),

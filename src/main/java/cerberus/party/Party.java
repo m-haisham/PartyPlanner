@@ -5,6 +5,8 @@ import cerberus.party.addons.QuantifiedAddon;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Party {
 
@@ -109,5 +111,16 @@ public class Party {
 
     public double getTotalCost() {
         return venue.getCost() + getAddonsCost();
+    }
+
+    public static  <T extends Party> ArrayList<Party> filter(ArrayList<Party> parties, Class<T> type) {
+        ArrayList<Party> list = new ArrayList<>();
+        for (Party party : parties) {
+            if (party.getClass() == type) {
+                list.add(party);
+            }
+        }
+
+        return list;
     }
 }

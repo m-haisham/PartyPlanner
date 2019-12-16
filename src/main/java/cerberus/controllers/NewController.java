@@ -7,6 +7,7 @@ import cerberus.helper.date.LocalTimeDifference;
 import cerberus.helper.navigation.Navigator;
 import cerberus.helper.proceed.Proceeder;
 import cerberus.models.dialog.AlertDialog;
+import cerberus.models.dialog.PartyInfo;
 import cerberus.models.list.QuantifiedListItem;
 import cerberus.models.list.SimpleListItem;
 import cerberus.models.table.VenueItem;
@@ -658,14 +659,16 @@ public class NewController implements Initializable {
             if (listItem.getTextField().getText().equals(""))
                 return;
 
+            int quantity = Integer.parseInt(listItem.getTextField().getText());
+            if (quantity <= 0) return;
+
             decos.add(new QuantifiedAddon(
                     listItem.getTitle(),
                     Double.parseDouble(listItem.getLeading()),
-                    Integer.parseInt(listItem.getTextField().getText())
+                    quantity
             ));
         });
 
-        System.out.println(Arrays.toString(decos.toArray()));
         party.setAddons(decos);
 
         return party;
@@ -674,11 +677,18 @@ public class NewController implements Initializable {
     public void finalizeAndInsert(ActionEvent event) {
         // database actions
         Main.database.insertParty(party);
-        PartiesController.instance.update();
+        PartiesController.instance.resetPartyList();
 
         // buttons
         finalizeBack.setDisable(true);
         finalizeComplete.setDisable(true);
         finalizeComplete.setText("ADDED");
+    }
+
+    public void showFullDetails(ActionEvent event) {
+        PartyInfo info = new PartyInfo(this.party);
+        JFXDialog dialog = new JFXDialog(BaseController.instance.root, info.getRoot(), JFXDialog.DialogTransition.CENTER);
+        dialog.show();
+        info.set();
     }
 }
