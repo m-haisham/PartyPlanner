@@ -19,6 +19,9 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+/**
+ * Instantiable ui component to show all of manga info
+ */
 public class PartyInfo {
 
     private Party party;

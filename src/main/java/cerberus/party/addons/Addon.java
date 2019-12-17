@@ -1,5 +1,8 @@
 package cerberus.party.addons;
 
+/**
+ * Addons for parties consists of label and cost
+ */
 public class Addon {
     private String label;
     private double cost;

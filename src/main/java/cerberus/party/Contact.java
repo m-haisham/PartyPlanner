@@ -1,10 +1,19 @@
 package cerberus.party;
 
+/**
+ * provides basic communication information
+ */
 public class Contact {
     private String name;
     private int mobile;
     private String email;
 
+    /**
+     * default constructor
+     * @param name name of contact
+     * @param mobile mobile no. of contact
+     * @param email email of contact
+     */
     public Contact(String name, int mobile, String email) {
         this.name = name;
         this.mobile = mobile;

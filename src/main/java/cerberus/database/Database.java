@@ -10,6 +10,9 @@ import org.dizitart.no2.objects.ObjectRepository;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * a nitrite database wrapper
+ */
 public class Database {
 
     private Nitrite db;

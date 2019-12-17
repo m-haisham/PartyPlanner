@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Basic Party class that provides general information
+ */
 public class Party {
 
     public static double prepaymentPercent = 0.15;
@@ -22,6 +25,12 @@ public class Party {
     private Contact contact;
     private ArrayList<QuantifiedAddon> addons;
 
+    /**
+     * default constructor
+     * @param label label
+     * @param venue place where party is to be held
+     * @param on the from, to time and their duration
+     */
     public Party(String label, Venue venue, Duration on) {
         this.label = label;
         this.venue = venue;
@@ -61,6 +70,9 @@ public class Party {
         return created;
     }
 
+    /**
+     * @param contact adds this to contacts
+     */
     public void addContact(Contact contact) {
         this.contacts.add(contact);
     }
@@ -81,6 +93,9 @@ public class Party {
         this.addons = addons;
     }
 
+    /**
+     * @return total cost of the addons
+     */
     public double getAddonsCost() {
         if (addons.size() <= 0)
             return 0;
@@ -113,6 +128,13 @@ public class Party {
         return venue.getCost() + getAddonsCost();
     }
 
+    /**
+     * filters the {@link ArrayList} to only contact T
+     * @param parties list of parties to be filterd
+     * @param type type to be filtered for
+     * @param <T> type of class that is to be filtered
+     * @return filtered parties
+     */
     public static  <T extends Party> ArrayList<Party> filter(ArrayList<Party> parties, Class<T> type) {
         ArrayList<Party> list = new ArrayList<>();
         for (Party party : parties) {

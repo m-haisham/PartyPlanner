@@ -2,6 +2,9 @@ package cerberus.party;
 
 import java.time.LocalDate;
 
+/**
+ * Person extends {@link Contact} to add date of birth
+ */
 public class Person extends Contact {
     private LocalDate birthDate;
 

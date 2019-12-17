@@ -2,6 +2,9 @@ package cerberus.party;
 
 import java.time.LocalDateTime;
 
+/**
+ * Provides time difference between two different {@link LocalDateTime}
+ */
 public class DateTimeDifference {
     private int years;
     private int months;

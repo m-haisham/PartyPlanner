@@ -1,5 +1,8 @@
 package cerberus.party.addons;
 
+/**
+ * extends {@link Addon} to provide quantity of addon
+ */
 public class QuantifiedAddon extends Addon {
 
     private int quantity;

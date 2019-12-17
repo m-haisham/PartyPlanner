@@ -4,6 +4,7 @@ import cerberus.Main;
 import cerberus.helper.date.DateTimeHelper;
 import cerberus.helper.date.LocalDateDifference;
 import cerberus.helper.date.LocalTimeDifference;
+import cerberus.helper.fx.NodeHelper;
 import cerberus.helper.navigation.Navigator;
 import cerberus.helper.proceed.Proceeder;
 import cerberus.models.dialog.AlertDialog;
@@ -28,6 +29,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
@@ -325,7 +327,6 @@ public class NewController implements Initializable {
 
     public void jumpPreviousTab(ActionEvent event) {
         Tab pop = navigator.pop();
-        stepTabs.getSelectionModel().select(pop);
     }
 
     public void basicValidateAndProceed(ActionEvent event) {
@@ -349,7 +350,7 @@ public class NewController implements Initializable {
         }
 
         if (proceed.shouldProceed()) {
-            navigator.push(basicTab, organiserContactTab);
+            navigator.push(organiserContactTab);
         }
     }
 
@@ -367,16 +368,16 @@ public class NewController implements Initializable {
 
             switch (partyTypeBox.getValue()){
                 case "Birthday":
-                    navigator.push(organiserContactTab, birthdayTab);
+                    navigator.push(birthdayTab);
                     break;
                 case "Wedding":
-                    navigator.push(organiserContactTab, weddingTab);
+                    navigator.push(weddingTab);
                     break;
                 case "Celebration":
-                    navigator.push(organiserContactTab, celebrationTab);
+                    navigator.push(celebrationTab);
                     break;
                 case "Farewell":
-                    navigator.push(organiserContactTab, farewellTab);
+                    navigator.push(farewellTab);
                     break;
                 default:
                     break;
@@ -395,7 +396,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            navigator.push(birthdayTab, venueTab);
+            navigator.push(venueTab);
         }
 
     }
@@ -420,7 +421,7 @@ public class NewController implements Initializable {
         });
 
         if (proceed.shouldProceed()) {
-            navigator.push(weddingTab, venueTab);
+            navigator.push(venueTab);
         }
     }
 
@@ -430,7 +431,7 @@ public class NewController implements Initializable {
         proceed.add(celebrationMessage.validate());
 
         if (proceed.shouldProceed()) {
-            navigator.push(celebrationTab, venueTab);
+            navigator.push(venueTab);
         }
     }
 
@@ -461,7 +462,7 @@ public class NewController implements Initializable {
 
     public void farewellValidateAndProceed(ActionEvent event) {
         if (farewellList.getItems().size() > 0) {
-            navigator.push(farewellTab, venueTab);
+            navigator.push(venueTab);
         } else {
             new AlertDialog("No one to send off makes a dull farewell").show();
         }
@@ -470,13 +471,14 @@ public class NewController implements Initializable {
     public void venueValidateAndProceed(ActionEvent event) {
         if (venueTable.getSelectionModel().getSelectedItem() == null) {
             venueWarning.setText("Please select a Venue!");
+            new AlertDialog("Select a venue!").show();
             return;
         }
 
         selectedVenue = venueTable.getSelectionModel().getSelectedItem().getValue().getVenue();
         venueWarning.setText("");
 
-        navigator.push(venueTab, contactsTab);
+        navigator.push(contactsTab);
     }
 
     public void addToContactsGroup(ActionEvent event) {
@@ -503,7 +505,7 @@ public class NewController implements Initializable {
 
     public void contactsValidateAndProceed(ActionEvent event) {
         if (contactsList.getItems().size() > 0) {
-            navigator.push(contactsTab, decorationTab);
+            navigator.push(decorationTab);
         } else {
             new AlertDialog("No invitees makes a dull party").show();
         }
@@ -541,7 +543,7 @@ public class NewController implements Initializable {
             prepaymentTotal.setText(String.valueOf(totalCost));
             prepaymentPercent.setText(String.valueOf(totalCost * Party.prepaymentPercent));
 
-            navigator.push(decorationTab, prepaymentTab);
+            navigator.push(prepaymentTab);
         }
     }
 
@@ -579,7 +581,7 @@ public class NewController implements Initializable {
         );
 
         // tab
-        navigator.push(prepaymentTab, completeTab);
+        navigator.push(completeTab);
 
         // create party values
         this.party = createParty();
@@ -678,6 +680,7 @@ public class NewController implements Initializable {
         // database actions
         Main.database.insertParty(party);
         PartiesController.instance.resetPartyList();
+        ChartsController.instance.setCharts();
 
         // buttons
         finalizeBack.setDisable(true);
@@ -690,5 +693,86 @@ public class NewController implements Initializable {
         JFXDialog dialog = new JFXDialog(BaseController.instance.root, info.getRoot(), JFXDialog.DialogTransition.CENTER);
         dialog.show();
         info.set();
+    }
+
+    public void reset() {
+
+        NodeHelper.resetAll(new Node[]{
+                // BASIC
+                labelField,
+                partyTypeBox,
+                partyFromDate,
+                partyFromTime,
+                partyToDate,
+                partyToTime,
+
+                /* CONTACT INFO */
+                organizerNameField,
+                organiserMobileField,
+                organiserEmailField,
+
+                /* BIRTHDAY */
+                birthdayCelebrantName,
+                birthdayCelebrantMobile,
+                birthdayCelebrantEmail,
+                birthdayCelebrantDate,
+
+                /* WEDDING */
+                spouseName,
+                spouseMobile,
+                spouseEmail,
+                spouseDate,
+
+                groomName,
+                groomMobile,
+                groomEmail,
+                groomDate,
+
+                /* CELEBRATION */
+                celebrationMessage,
+
+                /* FAREWELL */
+                farewellName,
+                farewellMobile,
+                farewellEmail,
+                farewellList,
+                farewellCount,
+
+                /* VENUE */
+
+                /* CONTACTS */
+                newContactName,
+                newContactMobile,
+                newContactEmail,
+                contactsList,
+                contactsCount,
+
+                /* DECORATIONS */
+                decorationTotal,
+
+                /* PREPAYMENT */
+                prepaymentTotal,
+                prepaymentPercent,
+                prepaymentToggle
+
+                /* complete screen doesnt need to be resetted, as its rewritten on form completion */
+        });
+
+        // FAREWELL
+        farewellGroup = new ArrayList<>();
+
+        // VENUE
+        selectedVenue = null;
+
+        // CONTACTS
+        contactsGroup = new ArrayList<>();
+
+        // DECORATIONS
+        decorations.forEach(decoration -> decoration.getTextField().setText(""));
+
+        // COMPLETE
+        finalizeBack.setDisable(false);
+        finalizeComplete.setDisable(false);
+        finalizeComplete.setText("Finalize");
     }
 }

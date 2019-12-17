@@ -1,0 +1,47 @@
+.chart-legend {
+  -fx-background-color: transparent;
+}
+
+/*  AXIS */
+.axis .text {
+  -fx-font-smoothing-type: lcd;
+  -fx-fill: #e4e4e4;
+}
+
+/* ====== CHART PLOT BACKGROUND =========================================================== */
+.chart-plot-background {
+  -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+  -fx-stroke: #505050;
+}
+.chart-horizontal-grid-lines {
+  -fx-stroke: #505050;
+}
+.chart-alternative-column-fill {
+  -fx-fill: #3d3d3d;
+  -fx-stroke: transparent;
+  -fx-stroke-width: 0;
+}
+.chart-alternative-row-fill {
+  -fx-fill: #1f1f1f;
+  -fx-stroke: transparent;
+  -fx-stroke-width: 0;
+}
+.chart-vertical-zero-line {
+  -fx-stroke: #999999;
+}
+.chart-horizontal-zero-line {
+  -fx-stroke: #999999;
+}
+
+/* ====== PIE CHART ============================================================== */
+
+.chart-pie-label {
+  -fx-padding: 3px;
+  -fx-fill: #e4e4e4;
+}
+.chart-pie-label-line {
+  -fx-stroke: #aaaaaa;
+  -fx-fill: #aaaaaa;
+}

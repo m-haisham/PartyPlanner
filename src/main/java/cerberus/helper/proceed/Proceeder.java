@@ -1,5 +1,6 @@
 package cerberus.helper.proceed;
 
+
 public class Proceeder {
     private boolean value = true;
 

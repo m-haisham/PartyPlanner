@@ -15,16 +15,29 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
+/**
+ * basic Alert dialog with a title and a message body
+ * it extends {@link JFXDialog} so call {@link #show()} to show dialog
+ */
 public class AlertDialog extends JFXDialog {
 
     @FXML private VBox box;
     @FXML private Label title;
     @FXML private Label message;
 
+    /**
+     * overloaded constructor where {@link #title} is set to "Title"
+     * @param message message of alert box
+     */
     public AlertDialog(String message) {
         this("Alert", message);
     }
 
+    /**
+     * loads FXML file 'alert.fxml' and sets this as controller
+     * @param title title of alert box
+     * @param message message of alert box
+     */
     public AlertDialog(String title, String message) {
         super();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dialogs/alert.fxml"));
