@@ -1,0 +1,17 @@
+@startuml
+
+title __CERBERUS's Class Diagram__\n
+
+  namespace cerberus {
+    class cerberus.Main {
+        {static} + database : Database
+        {static} + main()
+        + start()
+    }
+  }
+  
+
+  cerberus.Main -up-|> javafx.application.Application
+
+
+@enduml

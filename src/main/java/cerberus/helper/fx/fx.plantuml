@@ -1,0 +1,16 @@
+@startuml
+
+title __FX's Class Diagram__\n
+
+  namespace cerberus {
+    namespace helper.fx {
+      class cerberus.helper.fx.NodeHelper {
+          {static} + reset()
+          {static} + resetAll()
+      }
+    }
+  }
+  
+
+
+@enduml

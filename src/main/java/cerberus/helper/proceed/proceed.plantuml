@@ -1,0 +1,17 @@
+@startuml
+
+title __PROCEED's Class Diagram__\n
+
+  namespace cerberus {
+    namespace helper.proceed {
+      class cerberus.helper.proceed.Proceeder {
+          - value : boolean
+          + add()
+          + addAll()
+          + shouldProceed()
+      }
+    }
+  }
+
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+title __TABLE's Class Diagram__\n
+
+  namespace cerberus {
+    namespace models.table {
+      class cerberus.models.table.VenueItem {
+          - address : StringProperty
+          - cost : DoubleProperty
+          + VenueItem()
+          + getAddress()
+          + getCost()
+          + getVenue()
+          + setVenue()
+      }
+    }
+  }
+  
+
+  cerberus.models.table.VenueItem -up-|> com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject
+  cerberus.models.table.VenueItem o-- cerberus.party.Venue : venue
+
+@enduml

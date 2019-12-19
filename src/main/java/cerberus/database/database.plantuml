@@ -1,0 +1,28 @@
+@startuml
+
+title __DATABASE's Class Diagram__\n
+
+  namespace cerberus {
+    namespace database {
+      class cerberus.database.Database {
+          - birthdays : ObjectRepository<Birthday>
+          - celebrations : ObjectRepository<Celebration>
+          - db : Nitrite
+          - farewells : ObjectRepository<Farewell>
+          - somePaid : ObjectRepository<Party>
+          - weddings : ObjectRepository<Wedding>
+          + Database()
+          + getAll()
+          + getAll()
+          + getBirthdays()
+          + getCelebrations()
+          + getDb()
+          + getFarewells()
+          + getWeddings()
+          + insertParty()
+      }
+    }
+  }
+
+
+@enduml

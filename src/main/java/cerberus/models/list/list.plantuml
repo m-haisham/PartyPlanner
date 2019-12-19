@@ -1,0 +1,134 @@
+@startuml
+
+title __LIST's Class Diagram__\n
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.PartyItem {
+          - box : VBox
+          - label : Text
+          - organizer : Text
+          - time : Text
+          - type : Text
+          + PartyItem()
+          + asBox()
+          + getLabel()
+          + getOrganizer()
+          + getParty()
+          + getTime()
+          + getType()
+          + setLabel()
+          + setOrganizer()
+          + setParty()
+          + setTime()
+          + setType()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.QuantifiedListItem {
+          - box : HBox
+          - leading : Text
+          - subtitle : Text
+          - textField : JFXTextField
+          - title : Text
+          + QuantifiedListItem()
+          + QuantifiedListItem()
+          + QuantifiedListItem()
+          + asBox()
+          + getLeading()
+          + getTextField()
+          + getTitle()
+          + setLeading()
+          + setLeading()
+          + setSubtitle()
+          + setTitle()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.SelectableListItem {
+          - box : HBox
+          - checkBox : JFXCheckBox
+          - subtitle : Text
+          - title : Text
+          - trailing : Text
+          + SelectableListItem()
+          + isChecked()
+          + setChecked()
+          + setSubtitle()
+          + setTitle()
+          + setTrailing()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.SimpleListCell {
+          # updateItem()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.SimpleListItem {
+          - box : VBox
+          - subtitle : Text
+          - title : Text
+          + SimpleListItem()
+          + asNode()
+          + setSubtitle()
+          + setTitle()
+          + setWidth()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.TrailingListCell {
+          # updateItem()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.list {
+      class cerberus.models.list.TrailingListItem {
+          - box : HBox
+          - leading : Text
+          - subtitle : Text
+          - title : Text
+          - trailing : Text
+          + TrailingListItem()
+          + asBox()
+          + getLeading()
+          + getSubtitle()
+          + getTitle()
+          + getTrailing()
+          + setLeading()
+          + setSubtitle()
+          + setTitle()
+          + setTrailing()
+      }
+    }
+  }
+  
+
+  cerberus.models.list.PartyItem o-- cerberus.party.Party : party
+  cerberus.models.list.SimpleListCell -up-|> com.jfoenix.controls.JFXListCell
+  cerberus.models.list.TrailingListCell -up-|> com.jfoenix.controls.JFXListCell
+
+@enduml

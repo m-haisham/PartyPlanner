@@ -1,0 +1,173 @@
+@startuml
+
+title __CONTROLLERS's Class Diagram__\n
+
+  namespace cerberus {
+    namespace controllers {
+      class cerberus.controllers.BaseController {
+          {static} + instance : BaseController
+          + root : StackPane
+          ~ calenderTab : Tab
+          ~ chartTab : Tab
+          ~ drawerAnchor : AnchorPane
+          ~ drawerStack : JFXDrawersStack
+          ~ menuBurger : JFXHamburger
+          ~ menuTab : JFXTabPane
+          ~ newTab : Tab
+          ~ settingsTab : Tab
+          - drawer : JFXDrawer
+          + initialize()
+          - initDrawer()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace controllers {
+      class cerberus.controllers.ChartsController {
+          + barChart : BarChart<?, ?>
+          {static} + instance : ChartsController
+          + pieChart : PieChart
+          + initialize()
+          + setCharts()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace controllers {
+      class cerberus.controllers.NewController {
+          + basicTab : Tab
+          + birthdayCelebrantDate : JFXDatePicker
+          + birthdayCelebrantEmail : JFXTextField
+          + birthdayCelebrantMobile : JFXTextField
+          + birthdayCelebrantName : JFXTextField
+          + birthdayTab : Tab
+          + celebrationMessage : JFXTextArea
+          + celebrationTab : Tab
+          + completeContactsCount : Text
+          + completeDecorationsCost : Text
+          + completeDuration : Text
+          + completeEmail : Text
+          + completeFrom : Text
+          + completeLabel : Text
+          + completeMobile : Text
+          + completeName : Text
+          + completeTab : Tab
+          + completeTotalCost : Text
+          + completeType : Text
+          + completeVenue : Text
+          + completeVenueCost : Text
+          + contactsCount : Text
+          + contactsList : JFXListView<VBox>
+          + contactsTab : Tab
+          + decorationList : JFXListView<HBox>
+          + decorationTab : Tab
+          + decorationTotal : Text
+          + decorations : List<QuantifiedListItem>
+          + durationText : Text
+          + farewellCount : Text
+          + farewellEmail : JFXTextField
+          + farewellGroup : ArrayList<Contact>
+          + farewellList : JFXListView<VBox>
+          + farewellMobile : JFXTextField
+          + farewellName : JFXTextField
+          + farewellTab : Tab
+          + finalizeBack : JFXButton
+          + finalizeComplete : JFXButton
+          + groomDate : JFXDatePicker
+          + groomEmail : JFXTextField
+          + groomMobile : JFXTextField
+          + groomName : JFXTextField
+          {static} + instance : NewController
+          + newContactEmail : JFXTextField
+          + newContactMobile : JFXTextField
+          + newContactName : JFXTextField
+          + organiserContactTab : Tab
+          + organiserEmailField : JFXTextField
+          + organiserMobileField : JFXTextField
+          + organizerNameField : JFXTextField
+          + partyFromDate : JFXDatePicker
+          + partyFromTime : JFXTimePicker
+          + partyToDate : JFXDatePicker
+          + partyToTime : JFXTimePicker
+          + prepaymentPercent : Text
+          + prepaymentTab : Tab
+          + prepaymentToggle : JFXToggleButton
+          + prepaymentTotal : Text
+          + resetButton : JFXButton
+          + spouseDate : JFXDatePicker
+          + spouseEmail : JFXTextField
+          + spouseMobile : JFXTextField
+          + spouseName : JFXTextField
+          + stepTabs : JFXTabPane
+          + venueTab : Tab
+          + venueTable : JFXTreeTableView<VenueItem>
+          + venueWarning : Text
+          + weddingTab : Tab
+          ~ labelField : JFXTextField
+          ~ partyTypeBox : JFXComboBox<String>
+          - contactsGroup : ArrayList<Contact>
+          + addToContactsGroup()
+          + addToFarewellGroup()
+          + basicValidateAndProceed()
+          + birthdayValidateAndProceed()
+          + celebrationValidateAndProceed()
+          + completeAndDisplay()
+          + contactsValidateAndProceed()
+          + createParty()
+          + decorationValidateAndProceed()
+          + farewellValidateAndProceed()
+          + finalizeAndInsert()
+          + initialize()
+          + jumpPreviousTab()
+          + organiserValidateAndProceed()
+          + prepaymentValidateAndProceed()
+          + recalculateDecorationsCost()
+          + reset()
+          + showFullDetails()
+          + venueValidateAndProceed()
+          + weddingValidateAndProceed()
+          - getTimeDifference()
+          - initBasicPickers()
+          - initBirthdayFields()
+          - initContactFields()
+          - initDecorationFields()
+          - initFarewellFields()
+          - initVenueFields()
+          - initWeddingFields()
+          - initpartyTypeComboBox()
+          - updateTimeDifference()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace controllers {
+      class cerberus.controllers.PartiesController {
+          + eventsList : JFXListView<PartyItem>
+          + filterPaid : JFXComboBox<PaidPercent>
+          + filterPartyType : JFXComboBox<PartyType>
+          {static} + instance : PartiesController
+          + partyDetail : VBox
+          + initPartyList()
+          + initialize()
+          + resetPartyList()
+          + resetPartyList()
+      }
+    }
+  }
+  
+
+  cerberus.controllers.BaseController .up.|> javafx.fxml.Initializable
+  cerberus.controllers.ChartsController .up.|> javafx.fxml.Initializable
+  cerberus.controllers.NewController .up.|> javafx.fxml.Initializable
+  cerberus.controllers.NewController o-- cerberus.party.Venue : selectedVenue
+  cerberus.controllers.NewController o-- cerberus.helper.navigation.Navigator : navigator
+  cerberus.controllers.NewController o-- cerberus.party.Party : party
+  cerberus.controllers.PartiesController .up.|> javafx.fxml.Initializable
+
+@enduml

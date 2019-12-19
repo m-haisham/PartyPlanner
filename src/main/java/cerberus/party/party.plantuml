@@ -1,0 +1,136 @@
+@startuml
+
+title __PARTY's Class Diagram__\n
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.Contact {
+          - email : String
+          - mobile : int
+          - name : String
+          + Contact()
+          + getEmail()
+          + getMobile()
+          + getName()
+          + setEmail()
+          + setMobile()
+          + setName()
+      }
+    }
+  }
+
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.DateTimeDifference {
+          - days : int
+          - hours : int
+          - minutes : int
+          - months : int
+          - seconds : int
+          - years : int
+          + DateTimeDifference()
+          + getDays()
+          + getHours()
+          + getMinutes()
+          + getMonths()
+          + getSeconds()
+          + getYears()
+          + toString()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.Duration {
+          - from : LocalDateTime
+          - to : LocalDateTime
+          + Duration()
+          + Duration()
+          + difference()
+          + getFrom()
+          + getTo()
+          + setFrom()
+          + setTo()
+          {static} + zero()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.Party {
+          {static} + formatter : DateTimeFormatter
+          {static} + prepaymentPercent : double
+          # created : LocalDateTime
+          - addons : ArrayList<QuantifiedAddon>
+          - contacts : ArrayList<Contact>
+          - label : String
+          - paidPercentile : double
+          + Party()
+          + addContact()
+          {static} + filter()
+          + getAddons()
+          + getAddonsCost()
+          + getContact()
+          + getContacts()
+          + getCreated()
+          + getLabel()
+          + getOn()
+          + getPaidPercentile()
+          + getTotalCost()
+          + getVenue()
+          + setAddons()
+          + setContact()
+          + setContacts()
+          + setLabel()
+          + setOn()
+          + setPaidPercentile()
+          + setVenue()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.Person {
+          - birthDate : LocalDate
+          + Person()
+          + Person()
+          {static} + empty()
+          + getAge()
+          + getBirthDate()
+          + setBirthDate()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      class cerberus.party.Venue {
+          - cost : double
+          - path : String
+          + Venue()
+          + Venue()
+          {static} + empty()
+          + getCost()
+          + getPath()
+          {static} + mock()
+          + setCost()
+          + setPath()
+      }
+    }
+  }
+  
+
+  cerberus.party.Party o-- cerberus.party.Contact : contact
+  cerberus.party.Party o-- cerberus.party.Duration : on
+  cerberus.party.Party o-- cerberus.party.Venue : venue
+  cerberus.party.Person -up-|> cerberus.party.Contact
+
+@enduml

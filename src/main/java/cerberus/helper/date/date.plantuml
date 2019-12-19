@@ -1,0 +1,47 @@
+@startuml
+
+title __DATE's Class Diagram__\n
+
+  namespace cerberus {
+    namespace helper.date {
+      class cerberus.helper.date.DateTimeHelper {
+          {static} + dateFormatter : DateTimeFormatter
+          {static} + dateDifference()
+          {static} + timeDifference()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace helper.date {
+      class cerberus.helper.date.LocalDateDifference {
+          - days : int
+          - months : int
+          - years : int
+          + LocalDateDifference()
+          + getDays()
+          + getMonths()
+          + getYears()
+          + inHours()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace helper.date {
+      class cerberus.helper.date.LocalTimeDifference {
+          - hours : int
+          - mins : int
+          - secs : int
+          + LocalTimeDifference()
+          + getHours()
+          + getMins()
+          + getSecs()
+      }
+    }
+  }
+  
+
+@enduml

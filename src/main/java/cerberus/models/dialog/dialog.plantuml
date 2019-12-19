@@ -1,0 +1,82 @@
+@startuml
+
+title __DIALOG's Class Diagram__\n
+
+  namespace cerberus {
+    namespace models.dialog {
+      class cerberus.models.dialog.AlertDialog {
+          - box : VBox
+          - message : Label
+          - title : Label
+          + AlertDialog()
+          + AlertDialog()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.dialog {
+      class cerberus.models.dialog.PartyInfo {
+          - addonsCost : Text
+          - cAddonsCost : Text
+          - cPaid : Text
+          - cTotalCost : Text
+          - cVenueCost : Text
+          - contactsList : JFXListView
+          - created : Text
+          - decorationsList : JFXListView
+          - duration : Text
+          - from : Text
+          - inviteeCount : Text
+          - label : Text
+          - orgEmail : Text
+          - orgMobile : Text
+          - orgName : Text
+          - root : BorderPane
+          - tabPane : JFXTabPane
+          - to : Text
+          - venueAddress : Text
+          - venueCost : Text
+          + PartyInfo()
+          + getRoot()
+          + set()
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace models.dialog {
+      class cerberus.models.dialog.SpecificPartyInfo {
+          - birthday : Tab
+          - brideBirthdate : Text
+          - brideEmail : Text
+          - brideMobile : Text
+          - brideName : Text
+          - celebrantAge : Text
+          - celebrantBirthdate : Text
+          - celebrantEmail : Text
+          - celebrantMobile : Text
+          - celebrantName : Text
+          - celebration : Tab
+          - celebrationText : Label
+          - farewell : Tab
+          - farewellGroup : JFXListView<VBox>
+          - groomBirthdate : Text
+          - groomEmail : Text
+          - groomMobile : Text
+          - groomName : Text
+          - tab : Tab
+          - wedding : Tab
+          + SpecificPartyInfo()
+          + getTab()
+      }
+    }
+  }
+  
+
+  cerberus.models.dialog.AlertDialog -up-|> com.jfoenix.controls.JFXDialog
+  cerberus.models.dialog.PartyInfo o-- cerberus.party.Party : party
+
+@enduml

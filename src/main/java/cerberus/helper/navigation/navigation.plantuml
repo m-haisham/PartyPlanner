@@ -1,0 +1,20 @@
+@startuml
+
+title __NAVIGATION's Class Diagram__\n
+
+  namespace cerberus {
+    namespace helper.navigation {
+      class cerberus.helper.navigation.Navigator {
+          - pane : TabPane
+          + Navigator()
+          + pop()
+          + push()
+      }
+    }
+  }
+  
+
+  cerberus.helper.navigation.Navigator -up-|> java.util.Stack
+
+
+@enduml

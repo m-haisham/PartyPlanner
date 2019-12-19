@@ -1,0 +1,94 @@
+@startuml
+
+title __TYPES's Class Diagram__\n
+
+  namespace cerberus {
+    namespace party {
+      namespace types {
+        class cerberus.party.types.Birthday {
+            - age : int
+            + Birthday()
+            + Birthday()
+            + Birthday()
+            + Birthday()
+            + getAge()
+            + getAgeOnPartyDate()
+            + getAgeOnPartyDate()
+            + getPerson()
+            + read()
+            + setAge()
+            + setPerson()
+            + write()
+        }
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      namespace types {
+        class cerberus.party.types.Celebration {
+            - message : String
+            + Celebration()
+            + Celebration()
+            + Celebration()
+            + getMessage()
+            + read()
+            + setMessage()
+            + write()
+        }
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      namespace types {
+        class cerberus.party.types.Farewell {
+            - group : ArrayList<Contact>
+            + Farewell()
+            + Farewell()
+            + getGroup()
+            + read()
+            + setGroup()
+            + write()
+        }
+      }
+    }
+  }
+  
+
+  namespace cerberus {
+    namespace party {
+      namespace types {
+        class cerberus.party.types.Wedding {
+            + Wedding()
+            + Wedding()
+            + Wedding()
+            + getBride()
+            + getGroom()
+            + read()
+            + setBride()
+            + setGroom()
+            + write()
+        }
+      }
+    }
+  }
+  
+
+  cerberus.party.types.Birthday .up.|> org.dizitart.no2.mapper.Mappable
+  cerberus.party.types.Birthday -up-|> cerberus.party.Party
+  cerberus.party.types.Birthday o-- cerberus.party.Person : person
+  cerberus.party.types.Celebration .up.|> org.dizitart.no2.mapper.Mappable
+  cerberus.party.types.Celebration -up-|> cerberus.party.Party
+  cerberus.party.types.Farewell .up.|> org.dizitart.no2.mapper.Mappable
+  cerberus.party.types.Farewell -up-|> cerberus.party.Party
+  cerberus.party.types.Wedding .up.|> org.dizitart.no2.mapper.Mappable
+  cerberus.party.types.Wedding -up-|> cerberus.party.Party
+  cerberus.party.types.Wedding o-- cerberus.party.Person : bride
+  cerberus.party.types.Wedding o-- cerberus.party.Person : groom
+
+@enduml
