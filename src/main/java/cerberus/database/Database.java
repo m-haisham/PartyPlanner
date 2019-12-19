@@ -41,19 +41,15 @@ public class Database {
 
     public void insertParty(Party party) {
         if (party.getClass() == Birthday.class) {
-            assert party instanceof Birthday;
             birthdays.insert((Birthday) party);
         }
         if (party.getClass() == Wedding.class) {
-            assert party instanceof Wedding;
             weddings.insert((Wedding) party);
         }
         if (party.getClass() == Farewell.class) {
-            assert party instanceof Farewell;
             farewells.insert((Farewell) party);
         }
         if (party.getClass() == Celebration.class) {
-            assert party instanceof Celebration;
             celebrations.insert((Celebration) party);
         }
     }

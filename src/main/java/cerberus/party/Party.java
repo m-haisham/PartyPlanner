@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
  */
 public class Party {
 
-    public static double prepaymentPercent = 0.15;
-    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd MMM yyyy");
-
     private String label;
     private Venue venue;
     private Duration on;
@@ -24,6 +21,10 @@ public class Party {
     private ArrayList<Contact> contacts;
     private Contact contact;
     private ArrayList<QuantifiedAddon> addons;
+
+
+    public static double prepaymentPercent = 0.15;
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mma dd MMM yyyy");
 
     /**
      * default constructor
@@ -129,7 +130,7 @@ public class Party {
     }
 
     /**
-     * filters the {@link ArrayList} to only contact T
+     * filters the {@link ArrayList} to only contain T
      * @param parties list of parties to be filterd
      * @param type type to be filtered for
      * @param <T> type of class that is to be filtered
