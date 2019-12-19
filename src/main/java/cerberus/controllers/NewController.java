@@ -308,16 +308,11 @@ public class NewController implements Initializable {
     }
 
     private String getTimeDifference() {
-        LocalDateDifference dateDifference = DateTimeHelper.dateDifference(partyFromDate.getValue(), partyToDate.getValue());
-        LocalTimeDifference timeDifference = DateTimeHelper.timeDifference(partyFromTime.getValue(), partyToTime.getValue());
-
-        int totalHours = dateDifference.inHours();
-        totalHours += timeDifference.getHours();
-
-        String text = totalHours + "Hrs";
-        if (timeDifference.getMins() > 0)
-            text += ", " + timeDifference.getMins() + "Mins";
-        return text;
+        DateTimeDifference difference = new DateTimeDifference(
+                LocalDateTime.of(partyFromDate.getValue(), partyFromTime.getValue()),
+                LocalDateTime.of(partyToDate.getValue(), partyToTime.getValue())
+        );
+        return difference.toString();
     }
 
     private void initpartyTypeComboBox() {
