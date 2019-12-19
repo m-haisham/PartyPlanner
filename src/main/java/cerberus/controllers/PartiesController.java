@@ -127,8 +127,7 @@ public class PartiesController implements Initializable {
 
         ArrayList<Party> parties;
 
-        PartyType type = filterPartyType.getValue();
-        parties = Main.database.getAll(filterPaid.getValue(), type);
+        parties = Main.database.getAll(filterPaid.getValue(), filterPartyType.getValue());
 
         resetPartyList(parties);
 

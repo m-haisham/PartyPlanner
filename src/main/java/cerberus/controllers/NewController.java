@@ -42,7 +42,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -50,6 +49,7 @@ import java.util.stream.Collectors;
 public class NewController implements Initializable {
 
     public static NewController instance;
+    public JFXButton resetButton;
 
     private Navigator navigator;
     private Party party;
@@ -161,6 +161,8 @@ public class NewController implements Initializable {
 
         NumberValidator numberValidator = new NumberValidator();
         numberValidator.setMessage("Enter a valid number");
+
+        resetButton.setVisible(false);
 
         /* BASIC */
         labelField.getValidators().add(requiredFieldValidator);
@@ -351,6 +353,7 @@ public class NewController implements Initializable {
 
         if (proceed.shouldProceed()) {
             navigator.push(organiserContactTab);
+            resetButton.setVisible(true);
         }
     }
 
@@ -620,14 +623,14 @@ public class NewController implements Initializable {
             party = new Wedding();
             party = (Wedding) party;
 
-            ((Wedding) party).setHusband(new Person(
+            ((Wedding) party).setGroom(new Person(
                     groomName.getText(),
                     groomDate.getValue(),
                     Integer.parseInt(groomMobile.getText()),
                     groomEmail.getText()
             ));
 
-            ((Wedding) party).setWife(new Person(
+            ((Wedding) party).setBride(new Person(
                     spouseName.getText(),
                     spouseDate.getValue(),
                     Integer.parseInt(spouseMobile.getText()),
@@ -774,5 +777,9 @@ public class NewController implements Initializable {
         finalizeBack.setDisable(false);
         finalizeComplete.setDisable(false);
         finalizeComplete.setText("Finalize");
+
+        resetButton.setVisible(false);
+        stepTabs.getSelectionModel().select(basicTab);
+        navigator = new Navigator(stepTabs);
     }
 }

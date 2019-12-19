@@ -20,7 +20,7 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="heading-primary" text="CHARTS">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="20.0" top="10.0" />
                </VBox.margin>
             </Text>
             <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

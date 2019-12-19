@@ -8,8 +8,8 @@ import org.dizitart.no2.mapper.NitriteMapper;
 
 public class Wedding extends Party implements Mappable {
 
-    private Person wife;
-    private Person husband;
+    private Person bride;
+    private Person groom;
 
     public Wedding() {
         this("", Venue.empty(), Duration.zero());
@@ -19,26 +19,26 @@ public class Wedding extends Party implements Mappable {
         this(label, venue, on, Person.empty(), Person.empty());
     }
 
-    public Wedding(String label, Venue venue, Duration on, Person wife, Person husband) {
+    public Wedding(String label, Venue venue, Duration on, Person bride, Person groom) {
         super(label, venue, on);
-        this.wife = wife;
-        this.husband = husband;
+        this.bride = bride;
+        this.groom = groom;
     }
 
-    public Person getHusband() {
-        return husband;
+    public Person getGroom() {
+        return groom;
     }
 
-    public void setHusband(Person husband) {
-        this.husband = husband;
+    public void setGroom(Person groom) {
+        this.groom = groom;
     }
 
-    public Person getWife() {
-        return wife;
+    public Person getBride() {
+        return bride;
     }
 
-    public void setWife(Person wife) {
-        this.wife = wife;
+    public void setBride(Person bride) {
+        this.bride = bride;
     }
 
 
@@ -67,8 +67,8 @@ public class Wedding extends Party implements Mappable {
             this.setAddons(b.getAddons());
 
             // specific
-            this.setWife(b.getWife());
-            this.setHusband(b.getHusband());
+            this.setBride(b.getBride());
+            this.setGroom(b.getGroom());
         }
     }
 }

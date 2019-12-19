@@ -88,15 +88,15 @@ public class SpecificPartyInfo {
             assert party instanceof Wedding;
             tab = wedding;
 
-            brideName.setText(((Wedding) party).getWife().getName());
-            brideMobile.setText(String.valueOf(((Wedding) party).getWife().getMobile()));
-            brideEmail.setText(((Wedding) party).getWife().getEmail());
-            brideBirthdate.setText(((Wedding) party).getWife().getBirthDate().format(DateTimeHelper.dateFormatter));
+            brideName.setText(((Wedding) party).getBride().getName());
+            brideMobile.setText(String.valueOf(((Wedding) party).getBride().getMobile()));
+            brideEmail.setText(((Wedding) party).getBride().getEmail());
+            brideBirthdate.setText(((Wedding) party).getBride().getBirthDate().format(DateTimeHelper.dateFormatter));
 
-            groomName.setText(((Wedding) party).getHusband().getName());
-            groomMobile.setText(String.valueOf(((Wedding) party).getHusband().getMobile()));
-            groomEmail.setText(((Wedding) party).getHusband().getEmail());
-            groomBirthdate.setText(((Wedding) party).getHusband().getBirthDate().format(DateTimeHelper.dateFormatter));
+            groomName.setText(((Wedding) party).getGroom().getName());
+            groomMobile.setText(String.valueOf(((Wedding) party).getGroom().getMobile()));
+            groomEmail.setText(((Wedding) party).getGroom().getEmail());
+            groomBirthdate.setText(((Wedding) party).getGroom().getBirthDate().format(DateTimeHelper.dateFormatter));
         }
     }
 
