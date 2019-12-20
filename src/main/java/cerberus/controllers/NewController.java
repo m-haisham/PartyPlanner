@@ -196,16 +196,23 @@ public class NewController implements Initializable {
         initContactFields(requiredFieldValidator, numberValidator);
 
         /* DECORATIONS */
-        initDecorationFields();
+        initDecorationFields(Birthday.class);
     }
 
-    private void initDecorationFields() {
-        ArrayList<Addon> allAddons = AddonFactory.availableDecorationsFor(new Farewell("", new Venue("", 0), new Duration(LocalDateTime.now(), LocalDateTime.now())));
+    private void initDecorationFields(Class<? extends Party> type) {
+        if (type == null)
+            return;
+
+        decorationList.setItems(FXCollections.observableArrayList());
+        decorations = new ArrayList<>();
+
+        ArrayList<Addon> allAddons = AddonFactory.availableDecorationsFor(type);
 
         decorations = allAddons
                 .stream()
                 .map(addon -> new QuantifiedListItem(addon.getLabel(), "", String.valueOf(addon.getCost())))
                 .collect(Collectors.toList());
+
 
         decorations.forEach(item -> {
             item.getTextField().focusedProperty().addListener((o, oldValue, newValue) -> {
@@ -320,6 +327,24 @@ public class NewController implements Initializable {
         partyTypeBox.getItems().add(Celebration.class.getSimpleName());
         partyTypeBox.getItems().add(Farewell.class.getSimpleName());
         partyTypeBox.getItems().add(Wedding.class.getSimpleName());
+        partyTypeBox.setOnAction(event -> {
+            switch (partyTypeBox.getValue()){
+                case "Birthday":
+                    initDecorationFields(Birthday.class);
+                    break;
+                case "Wedding":
+                    initDecorationFields(Wedding.class);
+                    break;
+                case "Celebration":
+                    initDecorationFields(Celebration.class);
+                    break;
+                case "Farewell":
+                    initDecorationFields(Farewell.class);
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     public void jumpPreviousTab(ActionEvent event) {

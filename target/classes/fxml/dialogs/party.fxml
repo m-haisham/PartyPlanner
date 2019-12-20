@@ -435,7 +435,7 @@
                               </HBox>
                               <VBox alignment="CENTER" prefHeight="40.0" prefWidth="350.0" styleClass="border-botton-1">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TOTAL">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TOTAL ( INCLUDING 6% GST )">
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>

@@ -36,7 +36,6 @@ public class BaseController implements Initializable {
     @FXML Tab newTab;
     @FXML Tab calenderTab;
     @FXML Tab chartTab;
-    @FXML Tab settingsTab;
 
 
     @Override
@@ -70,10 +69,6 @@ public class BaseController implements Initializable {
                             }
                             case "chart": {
                                 menuTab.getSelectionModel().select(chartTab);
-                                break;
-                            }
-                            case "settings": {
-                                menuTab.getSelectionModel().select(settingsTab);
                                 break;
                             }
                             default:

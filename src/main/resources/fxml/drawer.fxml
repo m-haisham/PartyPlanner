@@ -44,7 +44,7 @@
                            <center>
                               <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="CALENDER">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="PARTIES">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>
@@ -65,7 +65,7 @@
                            <center>
                               <HBox alignment="CENTER" prefHeight="26.0" prefWidth="183.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="CHART">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 15;" styleClass="subheading" text="CHARTS">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>

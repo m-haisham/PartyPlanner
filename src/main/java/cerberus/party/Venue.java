@@ -38,10 +38,14 @@ public class Venue {
 
     public static ArrayList<Venue> mock() {
         return new ArrayList<>(Arrays.asList(
-                new Venue("Chaple", 500),
-                new Venue("Beach", 800),
-                new Venue("Macro", 1000),
-                new Venue("Sandiago", 5000),
-                new Venue("Work house", 200)));
+                new Venue("Chaply", 1407),
+                new Venue("Artificial Beach", 2300),
+                new Venue("Anantara Veli Resort", 19122),
+                new Venue("Cocoa Island", 34468),
+                new Venue("Paradise Island", 6533),
+                new Venue("Constance Halaveli", 23024),
+                new Venue("Taj Exotica", 15420),
+                new Venue("Gobiig Maldives", 1350)
+        ));
     }
 }

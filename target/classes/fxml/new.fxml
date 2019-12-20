@@ -1119,7 +1119,7 @@
                                                          <children>
                                                             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="170.0">
                                                                <children>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TOTAL" />
+                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-14" text="TOTAL (WITH 6% GST)" />
                                                                </children>
                                                             </VBox>
                                                             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
