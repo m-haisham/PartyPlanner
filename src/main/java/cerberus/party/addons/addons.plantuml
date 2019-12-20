@@ -35,6 +35,7 @@ title __ADDONS's Class Diagram__\n
     namespace party {
       namespace addons {
         class cerberus.party.addons.QuantifiedAddon {
+            {static} + arrayType : Type
             - quantity : int
             + QuantifiedAddon()
             + QuantifiedAddon()

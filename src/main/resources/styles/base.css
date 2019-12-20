@@ -170,6 +170,16 @@
   -fx-padding: 10 15 10 15;
 }
 
+.alert-button-sm {
+  -fx-font-family: "Roboto Black";
+  -fx-font-size: 15;
+
+  -fx-background-color: rgb(228, 6, 6);
+  -fx-background-radius: 5;
+
+  -fx-padding: 10 15 10 15;
+}
+
 .proceed-button .jfx-rippler {
   -jfx-rippler-fill: #ffceb9;
 }

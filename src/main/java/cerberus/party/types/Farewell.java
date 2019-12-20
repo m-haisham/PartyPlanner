@@ -36,8 +36,10 @@ public class Farewell extends Party implements Mappable {
     @Override
     public Document write(NitriteMapper nitriteMapper) {
         Gson gson = new Gson();
-        Document document = new Document();
-        document.put(this.getClass().getName(), gson.toJson(this));
+        Document document = super.write(nitriteMapper);
+
+        document.put("group", gson.toJson(getGroup(), Contact.arrayType));
+
         return document;
     }
 
@@ -45,20 +47,9 @@ public class Farewell extends Party implements Mappable {
     public void read(NitriteMapper nitriteMapper, Document document) {
         if (document != null) {
             Gson gson = new Gson();
-            Farewell b = gson.fromJson((String) document.get(this.getClass().getName()), this.getClass());
 
-            // generic
-            this.setLabel(b.getLabel());
-            this.setVenue(b.getVenue());
-            this.setOn(b.getOn());
-            this.setPaidPercentile(b.getPaidPercentile());
-            this.created = b.getCreated();
-            this.setContacts(b.getContacts());
-            this.setContact(b.getContact());
-            this.setAddons(b.getAddons());
-
-            // specific
-            this.setGroup(b.getGroup());
+            super.read(nitriteMapper, document);
+            setGroup(gson.fromJson((String) document.get("group"), Contact.arrayType));
         }
     }
 }

@@ -1,9 +1,17 @@
 package cerberus.party;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 /**
  * provides basic communication information
  */
 public class Contact {
+
+    public static Type arrayType = new TypeToken<ArrayList<Contact>>() {}.getType();
+
     private String name;
     private int mobile;
     private String email;

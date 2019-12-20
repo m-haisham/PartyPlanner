@@ -38,8 +38,10 @@ public class Celebration extends Party implements Mappable {
     @Override
     public Document write(NitriteMapper nitriteMapper) {
         Gson gson = new Gson();
-        Document document = new Document();
-        document.put(this.getClass().getName(), gson.toJson(this));
+        Document document = super.write(nitriteMapper);
+
+        document.put("message", getMessage());
+
         return document;
     }
 
@@ -47,20 +49,9 @@ public class Celebration extends Party implements Mappable {
     public void read(NitriteMapper nitriteMapper, Document document) {
         if (document != null) {
             Gson gson = new Gson();
-            Celebration b = gson.fromJson((String) document.get(this.getClass().getName()), this.getClass());
 
-            // generic
-            this.setLabel(b.getLabel());
-            this.setVenue(b.getVenue());
-            this.setOn(b.getOn());
-            this.setPaidPercentile(b.getPaidPercentile());
-            this.created = b.getCreated();
-            this.setContacts(b.getContacts());
-            this.setContact(b.getContact());
-            this.setAddons(b.getAddons());
-
-            // specific
-            this.setMessage(b.getMessage());
+            super.read(nitriteMapper, document);
+            setMessage((String) document.get("message"));
         }
     }
 }

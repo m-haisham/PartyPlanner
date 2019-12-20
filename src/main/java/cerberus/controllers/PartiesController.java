@@ -6,17 +6,26 @@ import cerberus.models.list.PartyItem;
 import cerberus.party.Party;
 import cerberus.party.filter.PaidPercent;
 import cerberus.party.filter.PartyType;
+import cerberus.party.types.Celebration;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
+import org.dizitart.no2.filters.Filters;
+import org.dizitart.no2.objects.Cursor;
+import org.dizitart.no2.objects.ObjectFilter;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -93,6 +102,13 @@ public class PartiesController implements Initializable {
                     protected void updateItem(PartyItem item, boolean empty) {
                         super.updateItem(item, empty);
                         if (!empty && item != null) {
+
+                            // set remove button action
+                            item.getRemoveButton().setOnAction(event -> {
+                                Main.database.removeParty(ObjectFilters.eq("created", item.getParty().getCreatedAsJson()), item.getParty().getClass());
+                                eventsList.getItems().remove(item);
+                            });
+
                             setText(null);
                             setGraphic(item.asBox());
                         }
@@ -103,6 +119,9 @@ public class PartiesController implements Initializable {
 
         eventsList.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
+                if (eventsList.getSelectionModel().getSelectedItem() == null)
+                    return;
+
                 PartyInfo info = new PartyInfo(eventsList.getSelectionModel().getSelectedItem().getParty());
                 new JFXDialog(BaseController.instance.root, info.getRoot(), JFXDialog.DialogTransition.CENTER).show();
                 info.set();

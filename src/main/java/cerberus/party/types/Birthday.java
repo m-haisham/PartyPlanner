@@ -60,8 +60,11 @@ public class Birthday extends Party implements Mappable {
     @Override
     public Document write(NitriteMapper nitriteMapper) {
         Gson gson = new Gson();
-        Document document = new Document();
-        document.put(this.getClass().getName(), gson.toJson(this));
+        Document document = super.write(nitriteMapper);
+
+        document.put("person", gson.toJson(getPerson()));
+        document.put("age", getAge());
+
         return document;
     }
 
@@ -69,21 +72,11 @@ public class Birthday extends Party implements Mappable {
     public void read(NitriteMapper nitriteMapper, Document document) {
         if (document != null) {
             Gson gson = new Gson();
-            Birthday b = gson.fromJson((String) document.get(this.getClass().getName()), this.getClass());
 
-            // generic
-            this.setLabel(b.getLabel());
-            this.setVenue(b.getVenue());
-            this.setOn(b.getOn());
-            this.setPaidPercentile(b.getPaidPercentile());
-            this.created = b.getCreated();
-            this.setContacts(b.getContacts());
-            this.setContact(b.getContact());
-            this.setAddons(b.getAddons());
+            super.read(nitriteMapper, document);
+            setPerson(gson.fromJson((String) document.get("person"), Person.class));
+            setAge((Integer) document.get("age"));
 
-            // specific
-            this.setPerson(b.getPerson());
-            this.setAge(b.getAge());
         }
     }
 }

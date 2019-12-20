@@ -338,6 +338,7 @@ title __PARTY's Class Diagram__\n
   cerberus.models.list.TrailingListCell -up-|> com.jfoenix.controls.JFXListCell
   cerberus.models.table.VenueItem -up-|> com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject
   cerberus.models.table.VenueItem o-- cerberus.party.Venue : venue
+  cerberus.party.Party .up.|> org.dizitart.no2.mapper.Mappable
   cerberus.party.Party o-- cerberus.party.Contact : contact
   cerberus.party.Party o-- cerberus.party.Duration : on
   cerberus.party.Party o-- cerberus.party.Venue : venue

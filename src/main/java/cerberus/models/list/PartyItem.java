@@ -1,8 +1,14 @@
 package cerberus.models.list;
 
 import cerberus.party.Party;
+import com.jfoenix.controls.JFXButton;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -16,6 +22,8 @@ public class PartyItem {
     @FXML private Text type;
     @FXML private Text organizer;
     @FXML private Text time;
+
+    @FXML private JFXButton removeButton;
 
     private Party party;
 
@@ -74,6 +82,10 @@ public class PartyItem {
 
     public void setParty(Party party) {
         this.party = party;
+    }
+
+    public JFXButton getRemoveButton() {
+        return removeButton;
     }
 
     public VBox asBox() {

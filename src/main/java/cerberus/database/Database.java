@@ -5,7 +5,9 @@ import cerberus.party.filter.PaidPercent;
 import cerberus.party.filter.PartyType;
 import cerberus.party.types.*;
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.objects.ObjectFilter;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,8 +19,6 @@ public class Database {
 
     private Nitrite db;
 
-    private ObjectRepository<Party> somePaid;
-
     private ObjectRepository<Birthday> birthdays;
     private ObjectRepository<Wedding> weddings;
     private ObjectRepository<Farewell> farewells;
@@ -29,9 +29,6 @@ public class Database {
                 .builder()
                 .filePath(file)
                 .openOrCreate();
-
-
-        somePaid = db.getRepository(Party.class);
 
         birthdays = db.getRepository(Birthday.class);
         weddings = db.getRepository(Wedding.class);
@@ -51,6 +48,21 @@ public class Database {
         }
         if (party.getClass() == Celebration.class) {
             celebrations.insert((Celebration) party);
+        }
+    }
+
+    public void removeParty(ObjectFilter filter, Class<? extends Party> typeOfParty) {
+        if (typeOfParty == Birthday.class) {
+            birthdays.remove(filter);
+        }
+        if (typeOfParty == Wedding.class) {
+            weddings.remove(filter);
+        }
+        if (typeOfParty == Farewell.class) {
+            farewells.remove(filter);
+        }
+        if (typeOfParty == Celebration.class) {
+            celebrations.remove(filter);
         }
     }
 
